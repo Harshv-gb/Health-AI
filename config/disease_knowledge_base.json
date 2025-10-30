@@ -1,0 +1,138 @@
+{
+  "disease_database": {
+    "Common Cold": {
+      "symptoms": ["runny nose", "sore throat", "sneezing", "cough", "mild fever"],
+      "causes": ["Rhinovirus", "Viral infection"],
+      "treatment": ["Rest", "Drink fluids", "Gargle with salt water", "OTC pain relievers"],
+      "duration": "7-10 days",
+      "when_to_see_doctor": "If symptoms persist beyond 10 days or worsen",
+      "prevention": ["Wash hands frequently", "Avoid close contact with sick people"]
+    },
+    
+    "Influenza (Flu)": {
+      "symptoms": ["high fever", "body ache", "cough", "fatigue", "headache"],
+      "causes": ["Influenza virus"],
+      "treatment": ["Antiviral medications (Tamiflu)", "Rest", "Fluids", "Fever reducers"],
+      "duration": "1-2 weeks",
+      "when_to_see_doctor": "Difficulty breathing, persistent high fever, confusion",
+      "prevention": ["Annual flu vaccine", "Good hygiene"]
+    },
+    
+    "COVID-19": {
+      "symptoms": ["fever", "dry cough", "loss of smell", "loss of taste", "shortness of breath"],
+      "causes": ["SARS-CoV-2 virus"],
+      "treatment": ["Isolation", "Symptomatic treatment", "Oxygen if needed", "Antivirals for severe cases"],
+      "duration": "1-3 weeks",
+      "when_to_see_doctor": "Difficulty breathing, chest pain, confusion, bluish lips",
+      "prevention": ["Vaccination", "Masking", "Social distancing", "Hand hygiene"]
+    },
+    
+    "Hypertension": {
+      "symptoms": ["headache", "dizziness", "blurred vision", "nosebleeds"],
+      "causes": ["Genetic factors", "Poor diet", "Lack of exercise", "Stress"],
+      "treatment": ["Lifestyle changes", "Reduce salt intake", "Exercise", "Blood pressure medications"],
+      "duration": "Chronic - lifelong management",
+      "when_to_see_doctor": "Regular monitoring needed, severe headaches, chest pain",
+      "prevention": ["Healthy diet", "Regular exercise", "Maintain healthy weight", "Limit alcohol"]
+    },
+    
+    "Type 2 Diabetes": {
+      "symptoms": ["increased thirst", "frequent urination", "fatigue", "blurred vision", "slow healing wounds"],
+      "causes": ["Insulin resistance", "Obesity", "Genetic factors", "Sedentary lifestyle"],
+      "treatment": ["Diet modification", "Exercise", "Oral medications", "Insulin therapy if needed"],
+      "duration": "Chronic - lifelong management",
+      "when_to_see_doctor": "Regular monitoring, very high/low blood sugar, ketoacidosis symptoms",
+      "prevention": ["Healthy weight", "Regular exercise", "Balanced diet", "Regular screening"]
+    },
+    
+    "Asthma": {
+      "symptoms": ["wheezing", "shortness of breath", "chest tightness", "cough"],
+      "causes": ["Allergens", "Exercise", "Cold air", "Stress", "Genetic factors"],
+      "treatment": ["Inhalers (bronchodilators)", "Corticosteroids", "Avoid triggers"],
+      "duration": "Chronic - requires ongoing management",
+      "when_to_see_doctor": "Severe difficulty breathing, blue lips, inhaler not helping",
+      "prevention": ["Identify triggers", "Use medications as prescribed", "Regular check-ups"]
+    },
+    
+    "UTI (Urinary Tract Infection)": {
+      "symptoms": ["burning urination", "frequent urination", "lower abdominal pain", "cloudy urine"],
+      "causes": ["Bacterial infection (E. coli most common)"],
+      "treatment": ["Antibiotics", "Drink plenty of water", "Cranberry juice", "Pain relievers"],
+      "duration": "3-7 days with treatment",
+      "when_to_see_doctor": "Fever, back pain, blood in urine, symptoms don't improve in 2 days",
+      "prevention": ["Stay hydrated", "Urinate after intercourse", "Wipe front to back", "Avoid irritating products"]
+    },
+    
+    "Migraine": {
+      "symptoms": ["severe headache", "sensitivity to light", "nausea", "visual disturbances"],
+      "causes": ["Genetic factors", "Hormonal changes", "Stress", "Certain foods", "Sleep disruption"],
+      "treatment": ["Rest in dark room", "Pain relievers", "Triptans", "Preventive medications"],
+      "duration": "4-72 hours per episode",
+      "when_to_see_doctor": "New pattern of headaches, severe sudden headache, neurological symptoms",
+      "prevention": ["Identify triggers", "Regular sleep", "Stress management", "Avoid trigger foods"]
+    },
+    
+    "GERD (Acid Reflux)": {
+      "symptoms": ["heartburn", "acid reflux", "chest pain", "difficulty swallowing"],
+      "causes": ["Weak lower esophageal sphincter", "Obesity", "Certain foods", "Smoking"],
+      "treatment": ["Lifestyle changes", "Avoid trigger foods", "Antacids", "PPIs", "Elevate head while sleeping"],
+      "duration": "Chronic - requires ongoing management",
+      "when_to_see_doctor": "Difficulty swallowing, weight loss, chest pain, vomiting blood",
+      "prevention": ["Eat smaller meals", "Avoid lying down after eating", "Maintain healthy weight", "Avoid triggers"]
+    },
+    
+    "Depression": {
+      "symptoms": ["persistent sadness", "loss of interest", "fatigue", "sleep problems", "difficulty concentrating"],
+      "causes": ["Biological factors", "Trauma", "Stressful life events", "Family history"],
+      "treatment": ["Psychotherapy", "Antidepressants", "Lifestyle changes", "Exercise", "Support groups"],
+      "duration": "Varies - weeks to months",
+      "when_to_see_doctor": "Suicidal thoughts, inability to function, symptoms persist beyond 2 weeks",
+      "prevention": ["Social connections", "Exercise", "Stress management", "Adequate sleep"]
+    },
+    
+    "Anxiety Disorder": {
+      "symptoms": ["excessive worry", "restlessness", "rapid heartbeat", "sweating", "difficulty concentrating"],
+      "causes": ["Genetic factors", "Stress", "Trauma", "Medical conditions"],
+      "treatment": ["Cognitive behavioral therapy", "Anti-anxiety medications", "Relaxation techniques", "Exercise"],
+      "duration": "Chronic but manageable",
+      "when_to_see_doctor": "Panic attacks, unable to function, physical symptoms severe",
+      "prevention": ["Stress management", "Regular exercise", "Adequate sleep", "Limit caffeine"]
+    },
+    
+    "Pneumonia": {
+      "symptoms": ["high fever", "productive cough", "chest pain", "shortness of breath", "chills"],
+      "causes": ["Bacterial or viral infection"],
+      "treatment": ["Antibiotics (if bacterial)", "Rest", "Fluids", "Oxygen therapy if needed"],
+      "duration": "1-3 weeks",
+      "when_to_see_doctor": "Difficulty breathing, chest pain, confusion, high fever",
+      "prevention": ["Pneumonia vaccine", "Good hygiene", "Healthy lifestyle"]
+    },
+    
+    "Gastritis": {
+      "symptoms": ["stomach pain", "nausea", "bloating", "vomiting", "loss of appetite"],
+      "causes": ["H. pylori bacteria", "NSAIDs", "Alcohol", "Stress"],
+      "treatment": ["Antacids", "Proton pump inhibitors", "Antibiotics if H. pylori", "Avoid irritants"],
+      "duration": "Acute: days to weeks, Chronic: ongoing",
+      "when_to_see_doctor": "Severe pain, vomiting blood, black stools, persistent symptoms",
+      "prevention": ["Eat smaller meals", "Avoid alcohol and NSAIDs", "Manage stress"]
+    },
+    
+    "Allergic Rhinitis": {
+      "symptoms": ["sneezing", "runny nose", "itchy eyes", "nasal congestion"],
+      "causes": ["Pollen", "Dust mites", "Pet dander", "Mold"],
+      "treatment": ["Antihistamines", "Nasal corticosteroids", "Avoid allergens", "Allergy shots"],
+      "duration": "Seasonal or year-round",
+      "when_to_see_doctor": "Symptoms interfere with daily life, not responding to OTC medications",
+      "prevention": ["Avoid allergens", "Keep windows closed during high pollen", "Use air purifiers"]
+    },
+    
+    "Eczema": {
+      "symptoms": ["itchy skin", "red patches", "dry skin", "cracked skin"],
+      "causes": ["Genetic factors", "Immune system", "Environmental triggers"],
+      "treatment": ["Moisturizers", "Topical corticosteroids", "Avoid triggers", "Cool compresses"],
+      "duration": "Chronic with flare-ups",
+      "when_to_see_doctor": "Severe itching, infection, not responding to treatment",
+      "prevention": ["Moisturize regularly", "Avoid triggers", "Use gentle soaps"]
+    }
+  }
+}

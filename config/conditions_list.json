@@ -1,0 +1,130 @@
+{
+  "conditions": [
+    {
+      "condition": "Common Cold",
+      "symptoms": ["runny nose", "sore throat", "sneezing", "mild fever", "cough"],
+      "department": "General Medicine",
+      "severity": "self-care",
+      "notes": "Usually resolves within 7 days; see doctor if symptoms persist >10 days or worsen."
+    },
+    {
+      "condition": "Seasonal Cough",
+      "symptoms": ["dry cough", "throat irritation", "mild sore throat"],
+      "department": "General Medicine", 
+      "severity": "self-care",
+      "notes": "Often due to weather changes, allergies, or dust. Try warm water gargling and avoid cold drinks."
+    },
+    {
+      "condition": "Viral Fever",
+      "symptoms": ["fever", "body ache", "mild headache", "fatigue"],
+      "department": "General Medicine",
+      "severity": "GP",
+      "notes": "Common viral infection. Rest, hydration, and paracetamol for fever. See doctor if fever >3 days."
+    },
+    {
+      "condition": "Seasonal Flu",
+      "symptoms": ["fever", "cough", "body ache", "headache", "fatigue"],
+      "department": "General Medicine",
+      "severity": "GP",
+      "notes": "Seasonal influenza. Rest and symptomatic treatment. See doctor if breathing difficulty develops."
+    },
+    {
+      "condition": "Influenza (Flu)",
+      "symptoms": ["high fever", "severe body ache", "fatigue", "dry cough", "headache"],
+      "department": "General Medicine",
+      "severity": "GP",
+      "notes": "Seek medical advice if high fever persists or breathing difficulty occurs."
+    },
+    {
+      "condition": "Allergic Rhinitis",
+      "symptoms": ["runny nose", "sneezing", "watery eyes", "nasal congestion"],
+      "department": "General Medicine",
+      "severity": "self-care",
+      "notes": "Common allergic reaction. Avoid allergens, use antihistamines if needed."
+    },
+    {
+      "condition": "Throat Infection",
+      "symptoms": ["sore throat", "difficulty swallowing", "mild fever", "swollen lymph nodes"],
+      "department": "General Medicine",
+      "severity": "GP",
+      "notes": "Bacterial or viral throat infection. See doctor if severe pain or high fever."
+    },
+    {
+      "condition": "Asthma Attack",
+      "symptoms": ["shortness of breath", "chest tightness", "wheezing", "coughing at night"],
+      "department": "Pulmonology",
+      "severity": "urgent",
+      "notes": "If severe and unresponsive to inhaler, go to emergency immediately."
+    },
+    {
+      "condition": "Heart Attack",
+      "symptoms": ["chest pain", "pain radiating to arm", "sweating", "shortness of breath", "nausea"],
+      "department": "Cardiology",
+      "severity": "emergency",
+      "notes": "Immediate emergency attention required. Do not delay."
+    },
+    {
+      "condition": "Migraine",
+      "symptoms": ["severe headache", "nausea", "sensitivity to light", "visual disturbances"],
+      "department": "Neurology",
+      "severity": "GP",
+      "notes": "If headaches are recurrent or severe, consult a neurologist."
+    },
+    {
+      "condition": "Tension Headache",
+      "symptoms": ["mild headache", "stress", "fatigue", "neck tension"],
+      "department": "General Medicine",
+      "severity": "self-care",
+      "notes": "Often stress-related. Rest, hydration, and stress management help."
+    },
+    {
+      "condition": "Food Poisoning",
+      "symptoms": ["vomiting", "diarrhea", "abdominal cramps", "dehydration"],
+      "department": "Gastroenterology",
+      "severity": "GP",
+      "notes": "If dehydration is severe (sunken eyes, very little urination), seek emergency care."
+    },
+    {
+      "condition": "Gastritis",
+      "symptoms": ["stomach pain", "nausea", "bloating", "loss of appetite"],
+      "department": "Gastroenterology",
+      "severity": "GP",
+      "notes": "Avoid spicy food, take antacids. See doctor if pain persists."
+    },
+    {
+      "condition": "Diabetes Complication (Hyperglycemia)",
+      "symptoms": ["excessive thirst", "frequent urination", "fatigue", "blurred vision"],
+      "department": "Endocrinology",
+      "severity": "urgent",
+      "notes": "If blood sugar is very high with confusion or vomiting, emergency treatment is needed."
+    },
+    {
+      "condition": "Stroke",
+      "symptoms": ["sudden weakness on one side", "slurred speech", "drooping face", "confusion"],
+      "department": "Neurology",
+      "severity": "emergency",
+      "notes": "Immediate hospital care is critical (time = brain)."
+    },
+    {
+      "condition": "Urinary Tract Infection (UTI)",
+      "symptoms": ["burning urination", "frequent urination", "lower abdominal pain"],
+      "department": "Urology",
+      "severity": "GP",
+      "notes": "If fever or back pain develops, risk of kidney infection → urgent care."
+    },
+    {
+      "condition": "COVID-19",
+      "symptoms": ["loss of taste", "loss of smell", "persistent dry cough", "high fever", "severe fatigue", "breathlessness"],
+      "department": "General Medicine",
+      "severity": "urgent",
+      "notes": "Consider COVID-19 if loss of taste/smell with other symptoms. Get tested and isolate. Seek emergency care for severe breathlessness."
+    },
+    {
+      "condition": "Bronchitis",
+      "symptoms": ["persistent cough", "chest congestion", "mild fever", "fatigue"],
+      "department": "Pulmonology",
+      "severity": "GP",
+      "notes": "Often follows cold or flu. See doctor if cough persists >3 weeks or breathing difficulty."
+    }
+  ]
+}

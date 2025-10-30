@@ -1,0 +1,64 @@
+{
+  "departments": [
+    {
+      "name": "General Medicine",
+      "symptoms": ["fever", "cough", "sore throat", "runny nose", "fatigue", "headache", "body ache"],
+      "common_conditions": ["Common Cold", "Influenza (Flu)", "COVID-19", "Mild Viral Infection"]
+    },
+    {
+      "name": "Cardiology",
+      "symptoms": ["chest pain", "shortness of breath", "palpitations", "sweating", "arm pain"],
+      "common_conditions": ["Heart Attack", "Hypertension Complications", "Arrhythmia"]
+    },
+    {
+      "name": "Neurology",
+      "symptoms": ["headache", "slurred speech", "weakness on one side", "seizures", "dizziness", "numbness"],
+      "common_conditions": ["Migraine", "Stroke", "Epilepsy", "Vertigo"]
+    },
+    {
+      "name": "Pulmonology",
+      "symptoms": ["wheezing", "chronic cough", "breathlessness", "chest tightness"],
+      "common_conditions": ["Asthma", "COPD", "Pneumonia", "Bronchitis"]
+    },
+    {
+      "name": "Gastroenterology",
+      "symptoms": ["abdominal pain", "vomiting", "diarrhea", "bloating", "nausea"],
+      "common_conditions": ["Food Poisoning", "Gastritis", "Irritable Bowel Syndrome (IBS)", "Hepatitis"]
+    },
+    {
+      "name": "Endocrinology",
+      "symptoms": ["excessive thirst", "frequent urination", "fatigue", "weight changes", "blurred vision"],
+      "common_conditions": ["Diabetes", "Thyroid Disorders", "PCOS"]
+    },
+    {
+      "name": "Urology",
+      "symptoms": ["burning urination", "blood in urine", "frequent urination", "lower abdominal pain"],
+      "common_conditions": ["Urinary Tract Infection (UTI)", "Kidney Stones", "Prostate Issues"]
+    },
+    {
+      "name": "Orthopedics",
+      "symptoms": ["joint pain", "back pain", "swelling", "fractures", "restricted movement"],
+      "common_conditions": ["Arthritis", "Slip Disc", "Fractures", "Osteoporosis"]
+    },
+    {
+      "name": "Dermatology",
+      "symptoms": ["rash", "itching", "acne", "skin lesions", "hair loss"],
+      "common_conditions": ["Eczema", "Psoriasis", "Acne", "Fungal Infections"]
+    },
+    {
+      "name": "Psychiatry",
+      "symptoms": ["persistent sadness", "anxiety", "insomnia", "loss of interest", "panic attacks"],
+      "common_conditions": ["Depression", "Anxiety Disorder", "Insomnia", "Bipolar Disorder"]
+    },
+    {
+      "name": "Gynecology",
+      "symptoms": ["irregular periods", "pelvic pain", "vaginal discharge", "missed periods"],
+      "common_conditions": ["PCOS", "Menstrual Disorders", "Pregnancy-related Issues", "Infections"]
+    },
+    {
+      "name": "Pediatrics",
+      "symptoms": ["fever in children", "rashes in children", "loss of appetite", "frequent infections"],
+      "common_conditions": ["Pediatric Infections", "Allergies", "Nutritional Deficiencies"]
+    }
+  ]
+}

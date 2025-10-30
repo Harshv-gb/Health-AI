@@ -1,0 +1,74 @@
+{
+  "red_flags": [
+    {
+      "trigger_symptoms": ["severe chest pain", "chest pain with sweating", "chest pain radiating to arm", "sudden breathlessness"],
+      "likely_condition": "Heart Attack",
+      "department": "Cardiology",
+      "action": "emergency",
+      "notes": "Call ambulance or go to ER immediately."
+    },
+    {
+      "trigger_symptoms": ["sudden weakness on one side", "slurred speech", "drooping face", "sudden confusion"],
+      "likely_condition": "Stroke",
+      "department": "Neurology",
+      "action": "emergency",
+      "notes": "Immediate hospital care is critical (time = brain)."
+    },
+    {
+      "trigger_symptoms": ["severe difficulty breathing", "blue lips", "inability to speak full sentences"],
+      "likely_condition": "Severe Asthma Attack / Respiratory Distress",
+      "department": "Pulmonology",
+      "action": "emergency",
+      "notes": "Seek emergency care immediately."
+    },
+    {
+      "trigger_symptoms": ["severe abdominal pain", "rigid abdomen", "persistent vomiting with blood", "black tarry stools"],
+      "likely_condition": "Severe Gastrointestinal Emergency",
+      "department": "Gastroenterology",
+      "action": "emergency",
+      "notes": "Go to ER immediately for evaluation."
+    },
+    {
+      "trigger_symptoms": ["severe headache with neck stiffness", "loss of consciousness", "sudden seizure"],
+      "likely_condition": "Meningitis / Neurological Emergency",
+      "department": "Neurology",
+      "action": "emergency",
+      "notes": "Immediate hospital admission needed."
+    },
+    {
+      "trigger_symptoms": ["high fever > 40°C", "confusion", "persistent seizure", "unresponsiveness"],
+      "likely_condition": "Severe Infection / Sepsis",
+      "department": "General Medicine / ICU",
+      "action": "emergency",
+      "notes": "Requires urgent critical care."
+    },
+    {
+      "trigger_symptoms": ["severe trauma", "uncontrolled bleeding", "multiple fractures", "loss of consciousness after injury"],
+      "likely_condition": "Trauma / Accident",
+      "department": "Emergency / Orthopedics",
+      "action": "emergency",
+      "notes": "Stabilize and transport to trauma center immediately."
+    },
+    {
+      "trigger_symptoms": ["sudden vision loss", "double vision", "eye trauma with bleeding"],
+      "likely_condition": "Ophthalmic Emergency",
+      "department": "Ophthalmology",
+      "action": "emergency",
+      "notes": "Emergency ophthalmic care required."
+    },
+    {
+      "trigger_symptoms": ["burning urination with high fever", "back pain with chills", "blood in urine with clots"],
+      "likely_condition": "Severe UTI / Kidney Infection",
+      "department": "Urology",
+      "action": "emergency",
+      "notes": "Seek emergency urological care immediately."
+    },
+    {
+      "trigger_symptoms": ["pregnant with heavy bleeding", "severe abdominal cramps during pregnancy", "loss of consciousness in pregnancy"],
+      "likely_condition": "Obstetric Emergency",
+      "department": "Gynecology / Obstetrics",
+      "action": "emergency",
+      "notes": "Immediate hospital admission required."
+    }
+  ]
+}

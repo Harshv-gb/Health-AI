@@ -1,0 +1,2885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HealthAI - Smart Medical Assistant | AI-Powered Health Analysis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get instant medical insights with HealthAI. AI-powered symptom analysis, medicine recommendations, and hospital finder. Your intelligent health companion.">
+  <meta name="keywords" content="health AI, medical assistant, symptom checker, medicine recommendations, hospital finder, telemedicine">
+  <meta name="author" content="HealthAI Team">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="HealthAI - Smart Medical Assistant">
+  <meta property="og:description" content="AI-powered health analysis and medical recommendations">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/favicon.ico">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
+  
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="client-enhancements.js" defer></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <i class="fas fa-heartbeat"></i>
+        <span>HealthAI</span>
+      </div>
+      <div class="nav-menu">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-background">
+      <div class="hero-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+      </div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          Your AI-Powered
+          <span class="gradient-text">Health Assistant</span>
+        </h1>
+        <p class="hero-subtitle">
+          Get instant medical insights, find the right specialist, and locate nearby hospitals with advanced AI technology
+        </p>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">Patients Helped</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Accuracy Rate</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Available</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-form">
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fas fa-stethoscope"></i> Quick Health Check</h3>
+            <p>Describe your symptoms for personalized medical guidance</p>
+          </div>
+          <div class="card-body">
+            <form id="symptomForm">
+              <!-- Symptoms Input -->
+              <div class="form-group">
+                <label for="text" class="form-label">
+                  <i class="fas fa-comment-medical"></i>
+                  Describe your symptoms
+                </label>
+                <div class="input-group">
+                  <textarea 
+                    id="text" 
+                    name="text" 
+                    rows="4" 
+                    required 
+                    placeholder="Tell us what you're experiencing... (e.g., headache, fever, stomach pain)"
+                    class="form-input"
+                  ></textarea>
+                  <div class="voice-controls">
+                    <button type="button" id="voiceInput" class="btn btn-voice">
+                      <i class="fas fa-microphone"></i>
+                      <span>Voice Input</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Patient Information (Optional) -->
+              <div class="form-group">
+                <label class="form-label">
+                  <i class="fas fa-user-md"></i>
+                  Patient Information (Optional - Improves Accuracy)
+                </label>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+                  <input 
+                    type="number" 
+                    id="patientAge" 
+                    name="age" 
+                    placeholder="Age (e.g., 35)" 
+                    min="0" 
+                    max="120"
+                    class="form-input"
+                    style="margin: 0;"
+                  />
+                  <select id="patientGender" name="gender" class="form-input" style="margin: 0;">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Existing Medical Conditions -->
+              <div class="form-group">
+                <label for="chronicConditions" class="form-label">
+                  <i class="fas fa-notes-medical"></i>
+                  Existing Medical Conditions (Optional)
+                </label>
+                <textarea 
+                  id="chronicConditions" 
+                  name="chronicConditions" 
+                  rows="2" 
+                  placeholder="e.g., diabetes, hypertension, asthma (comma separated)"
+                  class="form-input"
+                ></textarea>
+                <small style="color: var(--text-secondary); font-size: 0.85em; margin-top: 5px; display: block;">
+                  Helps provide more accurate diagnosis by considering your medical history
+                </small>
+              </div>
+
+              <!-- Location Input -->
+              <div class="form-group">
+                <label for="location" class="form-label">
+                  <i class="fas fa-map-marker-alt"></i>
+                  Your Location
+                </label>
+                <div class="location-group">
+                  <input 
+                    type="text" 
+                    id="location" 
+                    name="location" 
+                    placeholder="Enter your city or address" 
+                    required 
+                    class="form-input"
+                  />
+                  <button type="button" id="useCurrentLocation" class="btn btn-location">
+                    <i class="fas fa-crosshairs"></i>
+                    <span>Use Current Location</span>
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Medical Report Upload -->
+              <div class="form-group">
+                <label for="reportUpload" class="form-label">
+                  <i class="fas fa-file-medical"></i>
+                  Upload Medical Report (Optional)
+                </label>
+                <div class="upload-area" id="uploadArea">
+                  <div class="upload-content">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag and drop your medical report here</p>
+                    <span>or click to browse files</span>
+                    <small>Supports PDF, JPG, PNG, DOC, DOCX</small>
+                  </div>
+                  <input 
+                    type="file" 
+                    id="reportUpload" 
+                    name="reportUpload" 
+                    accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+                    class="upload-input"
+                  />
+                  <button type="button" id="scanReport" class="btn btn-scan" style="display:none;">
+                    <i class="fas fa-search"></i>
+                    <span>Scan Report</span>
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary btn-submit">
+                <i class="fas fa-search"></i>
+                <span>Analyze Symptoms</span>
+                <div class="btn-loading" style="display: none;">
+                  <i class="fas fa-spinner fa-spin"></i>
+                </div>
+              </button>
+            </form>
+
+            <!-- Results Section - Right Below Analyze Button -->
+            <div id="result" class="results-container" style="display: none;">
+              <div class="results-card">
+                <div class="results-header">
+                  <div class="results-title">
+                    <i class="fas fa-diagnoses"></i>
+                    <h3>Medical Analysis Results</h3>
+                  </div>
+                  <div class="results-actions">
+                    <button id="speakResponse" class="btn-action btn-voice" style="display:none;">
+                      <i class="fas fa-volume-up"></i>
+                      <span>Listen</span>
+                    </button>
+                    <button id="stopSpeaking" class="btn-action btn-stop" style="display:none;">
+                      <i class="fas fa-stop"></i>
+                      <span>Stop</span>
+                    </button>
+                    <button class="btn-action btn-print" onclick="printResults()">
+                      <i class="fas fa-print"></i>
+                      <span>Print</span>
+                    </button>
+                  </div>
+                </div>
+                
+                <!-- Split View Container -->
+                <div id="splitViewContainer" class="split-view-container">
+                  <!-- Medical Analysis (Left Side) -->
+                  <div class="results-content" id="medicalAnalysisContent">
+                    <!-- Results will be populated here -->
+                  </div>
+                  
+                  <!-- AI Chat Interface (Right Side - Hidden by default) -->
+                  <div id="aiChatInterface" class="ai-chat-interface" style="display: none;">
+                    <div class="chat-header">
+                      <div class="chat-title">
+                        <i class="fas fa-robot"></i>
+                        <h4>AI Medical Assistant</h4>
+                      </div>
+                      <button id="closeChatBtn" class="btn-close-chat">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  <div class="chat-messages" id="chatMessages">
+                    <div class="chat-message bot-message">
+                      <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                      </div>
+                      <div class="message-content">
+                        <p>Hello! I'm your AI medical assistant. I can answer questions about your symptoms, provide health information, and offer guidance. How can I help you today?</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="chat-input-area">
+                    <div class="chat-input-wrapper">
+                      <input type="text" id="chatInput" class="chat-input" placeholder="Type your question here..." />
+                      <button id="voiceChatBtn" class="btn-voice-chat" title="Voice input">
+                        <i class="fas fa-microphone"></i>
+                      </button>
+                      <button id="sendChatBtn" class="btn-send-chat">
+                        <i class="fas fa-paper-plane"></i>
+                      </button>
+                    </div>
+                    <div class="chat-suggestions" id="chatSuggestions">
+                      <button class="suggestion-btn" data-question="What should I do next?">What should I do next?</button>
+                      <button class="suggestion-btn" data-question="Are there any home remedies?">Are there any home remedies?</button>
+                      <button class="suggestion-btn" data-question="When should I see a doctor?">When should I see a doctor?</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- End AI Chat Interface -->
+                
+              </div>
+              <!-- End Split View Container -->
+              
+            </div>
+            <!-- End Results Card -->
+          </div>
+          <!-- End Results Container -->
+
+        </div>
+        <!-- End Card Body -->
+      </div>
+      <!-- End Card -->
+    </div>
+    <!-- End Hero Form -->
+  </div>
+  <!-- End Hero Content -->
+  </section>
+
+  <!-- Medical Analysis Results Section -->
+  <section class="results-section" id="results" style="display: none;">
+    <div class="container">
+      <div class="section-header">
+        <h2>🏥 Medical Analysis Results</h2>
+        <button id="askAIBtnSection" class="btn-ask-ai-section">
+          <i class="fas fa-comments"></i>
+          <span>Ask AI</span>
+        </button>
+        <p>Your personalized medical analysis and recommendations</p>
+        <div class="section-actions">
+          <button id="sectionSpeakBtn" class="btn btn-secondary">
+            <i class="fas fa-volume-up"></i>
+            <span>Listen to Results</span>
+          </button>
+          <button id="sectionStopBtn" class="btn btn-secondary" style="display:none;">
+            <i class="fas fa-stop"></i>
+            <span>Stop</span>
+          </button>
+          <button class="btn btn-secondary" onclick="printSectionResults()">
+            <i class="fas fa-print"></i>
+            <span>Print Results</span>
+          </button>
+          <button id="findHospitalsBtn" class="btn btn-success">
+            <i class="fas fa-hospital"></i>
+            <span>Find Hospitals</span>
+          </button>
+          <button class="btn btn-primary" onclick="backToForm()">
+            <i class="fas fa-arrow-up"></i>
+            <span>Back to Form</span>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Split View for Results and Chat -->
+      <div id="mainSplitView" class="main-split-view">
+        <div class="results-content-wrapper">
+          <div id="analysisResults" class="analysis-results">
+            <!-- Results will be populated here -->
+          </div>
+        </div>
+        
+        <!-- AI Chat Panel (hidden by default) -->
+        <div id="aiChatPanel" class="ai-chat-panel" style="display: none;">
+          <div class="chat-header">
+            <div class="chat-title">
+              <i class="fas fa-robot"></i>
+              <h4>AI Medical Assistant</h4>
+            </div>
+            <button id="closeChatPanel" class="btn-close-chat">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="chat-messages" id="chatMessagesMain">
+            <div class="chat-message bot-message">
+              <div class="message-avatar">
+                <i class="fas fa-robot"></i>
+              </div>
+              <div class="message-content">
+                <p>Hello! I'm your AI medical assistant. I can answer questions about your symptoms, provide health information, and offer guidance. How can I help you today?</p>
+              </div>
+            </div>
+          </div>
+          <div class="chat-input-area">
+            <div class="chat-input-wrapper">
+              <input type="text" id="chatInputMain" class="chat-input" placeholder="Type your question here..." />
+              <button id="voiceChatBtnMain" class="btn-voice-chat" title="Voice input">
+                <i class="fas fa-microphone"></i>
+              </button>
+              <button id="sendChatBtnMain" class="btn-send-chat">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+            <div class="chat-suggestions" id="chatSuggestionsMain">
+              <button class="suggestion-btn">What should I do next?</button>
+              <button class="suggestion-btn">Are there any home remedies?</button>
+              <button class="suggestion-btn">When should I see a doctor?</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Advanced Medical AI Features</h2>
+        <p>Experience the future of healthcare with our cutting-edge technology</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3>AI Symptom Analysis</h3>
+          <p>Advanced machine learning algorithms analyze your symptoms with medical-grade accuracy</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-microphone"></i>
+          </div>
+          <h3>Voice Recognition</h3>
+          <p>Speak your symptoms naturally and let our AI understand and process your concerns</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-pills"></i>
+          </div>
+          <h3>Smart Recommendations</h3>
+          <p>Get personalized medicine recommendations and safety warnings based on your profile</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-hospital"></i>
+          </div>
+          <h3>Hospital Finder</h3>
+          <p>Locate the nearest hospitals and specialists based on your condition and location</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-file-medical-alt"></i>
+          </div>
+          <h3>Report Scanning</h3>
+          <p>Upload and scan medical reports for comprehensive health analysis</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Privacy First</h3>
+          <p>Your health data is encrypted and secure with enterprise-grade protection</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <h2>About HealthAI</h2>
+        <p>Revolutionizing healthcare through artificial intelligence and medical expertise</p>
+      </div>
+      <div class="about-content">
+        <div class="about-grid">
+          <div class="about-text">
+            <h3>Our Mission</h3>
+            <p>HealthAI is dedicated to making quality healthcare accessible to everyone through cutting-edge artificial intelligence. We combine advanced machine learning algorithms with medical expertise to provide accurate symptom analysis, personalized recommendations, and instant access to healthcare resources.</p>
+            
+            <h3>How It Works</h3>
+            <div class="process-steps">
+              <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <h4>Describe Symptoms</h4>
+                  <p>Tell us about your symptoms using text or voice input</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <h4>AI Analysis</h4>
+                  <p>Our AI analyzes your symptoms against medical databases</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <h4>Get Results</h4>
+                  <p>Receive personalized recommendations and find nearby care</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="about-stats">
+            <div class="stat-card">
+              <i class="fas fa-users"></i>
+              <h3>50,000+</h3>
+              <p>Patients Served</p>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-brain"></i>
+              <h3>98%</h3>
+              <p>Accuracy Rate</p>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-hospital"></i>
+              <h3>1,000+</h3>
+              <p>Partner Hospitals</p>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-clock"></i>
+              <h3>24/7</h3>
+              <p>Always Available</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hospital Finder Section -->
+  <section class="hospital-finder-section" id="hospital-finder" style="display: none;">
+    <div class="container">
+      <div class="section-header">
+        <h2>🏥 Find Nearby Hospitals</h2>
+        <p>Locate hospitals near you based on your condition and real-time location</p>
+      </div>
+      
+      <div class="hospital-finder-content">
+        <!-- Results will be shown here -->
+        <div id="finderResultsContainer" class="finder-results-container" style="display: none;">
+          <div class="results-header">
+            <h3 id="finderResultsTitle">🏥 Found Hospitals</h3>
+            <div style="display: flex; gap: 10px;">
+              <button id="backToAnalysisBtn" class="btn btn-primary btn-sm">
+                <i class="fas fa-arrow-left"></i> Back to Medical Analysis
+              </button>
+              <button id="finderClearBtn" class="btn btn-secondary btn-sm">
+                <i class="fas fa-times"></i> Clear Results
+              </button>
+            </div>
+          </div>
+          <div id="finderResultsContent" class="finder-results-content">
+            <!-- Results will be injected here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contact Us</h2>
+        <p>Get in touch with our team for support, partnerships, or inquiries</p>
+      </div>
+      <div class="contact-content">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Email Support</h4>
+                <p>support@healthai.com</p>
+                <small>Response within 24 hours</small>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Phone Support</h4>
+                <p>+1 (555) 123-4567</p>
+                <small>Monday - Friday, 9 AM - 6 PM</small>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Headquarters</h4>
+                <p>123 Medical AI Plaza<br>Tech City, TC 12345</p>
+                <small>Visit by appointment only</small>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-life-ring"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Emergency</h4>
+                <p>For medical emergencies</p>
+                <strong style="color: var(--danger-color);">Call 911 immediately</strong>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="contactName" class="form-label">
+                  <i class="fas fa-user"></i>
+                  Full Name
+                </label>
+                <input type="text" id="contactName" name="name" class="form-input" placeholder="Enter your full name" required>
+              </div>
+              <div class="form-group">
+                <label for="contactEmail" class="form-label">
+                  <i class="fas fa-envelope"></i>
+                  Email Address
+                </label>
+                <input type="email" id="contactEmail" name="email" class="form-input" placeholder="Enter your email address" required>
+              </div>
+              <div class="form-group">
+                <label for="contactSubject" class="form-label">
+                  <i class="fas fa-tag"></i>
+                  Subject
+                </label>
+                <select id="contactSubject" name="subject" class="form-input" required>
+                  <option value="">Select a subject</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="technical">Technical Support</option>
+                  <option value="partnership">Partnership</option>
+                  <option value="feedback">Feedback</option>
+                  <option value="medical">Medical Question</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="contactMessage" class="form-label">
+                  <i class="fas fa-comment"></i>
+                  Message
+                </label>
+                <textarea id="contactMessage" name="message" class="form-input" rows="5" placeholder="Tell us how we can help you..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-submit">
+                <i class="fas fa-paper-plane"></i>
+                <span>Send Message</span>
+                <div class="btn-loading" style="display: none;">
+                  <i class="fas fa-spinner fa-spin"></i>
+                </div>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+    <div class="loading-content">
+      <div class="loading-spinner">
+        <div class="pulse"></div>
+        <div class="pulse"></div>
+        <div class="pulse"></div>
+      </div>
+      <h3>Analyzing Your Symptoms</h3>
+      <p id="loadingText">Processing your medical information...</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <i class="fas fa-heartbeat"></i>
+            <span>HealthAI</span>
+          </div>
+          <p>Empowering better health decisions with AI technology</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <a href="#home">Home</a>
+          <a href="#features">Features</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <a href="#">Help Center</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Medical Disclaimer</a>
+        </div>
+        <div class="footer-section">
+          <h4>Emergency</h4>
+          <p><strong>For medical emergencies, call:</strong></p>
+          <p class="emergency-number">📞 Emergency Services</p>
+          <small>This tool is not for emergency situations</small>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 HealthAI. All rights reserved. | Medical AI Assistant</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Navigation Toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    navToggle.addEventListener('click', function() {
+      navMenu.classList.toggle('active');
+      navToggle.classList.toggle('active');
+    });
+
+    // Smooth Scrolling for Navigation Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        
+        // Special handling for home button - scroll to top
+        if (targetId === '#home') {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        } else {
+          const target = document.querySelector(targetId);
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+        
+        // Close mobile menu if open
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+        
+        // Update active nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+          link.classList.remove('active');
+        });
+        this.classList.add('active');
+      });
+    });
+
+    // Update active nav link on scroll
+    window.addEventListener('scroll', function() {
+      let current = '';
+      const sections = document.querySelectorAll('section[id], .hero[id]');
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Dark Theme Toggle
+    function initializeThemeToggle() {
+      const themeToggle = document.createElement('button');
+      themeToggle.className = 'theme-toggle';
+      themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      themeToggle.setAttribute('aria-label', 'Toggle dark theme');
+      
+      // Check for saved theme
+      const savedTheme = localStorage.getItem('healthai_theme') || 'light';
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      }
+      
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        const isDark = document.body.classList.contains('dark-theme');
+        
+        // Update button icon
+        themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        
+        // Save preference
+        localStorage.setItem('healthai_theme', isDark ? 'dark' : 'light');
+        
+        // Force style recalculation
+        document.body.style.transition = 'all 0.3s ease';
+        
+        // Show notification
+        if (window.HealthAI && window.HealthAI.showNotification) {
+          window.HealthAI.showNotification(
+            `Switched to ${isDark ? 'dark' : 'light'} theme`, 
+            'success', 
+            2000
+          );
+        }
+        
+        console.log('Theme toggled to:', isDark ? 'dark' : 'light');
+      });
+      
+      document.body.appendChild(themeToggle);
+    }
+
+    // Contact Form Handler
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = this.querySelector('.btn-submit');
+      const btnText = submitBtn ? submitBtn.querySelector('span') : null;
+      const btnLoading = submitBtn ? submitBtn.querySelector('.btn-loading') : null;
+      
+      // Show loading state only if elements exist
+      if (btnText && btnLoading && submitBtn) {
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'inline-block';
+        submitBtn.disabled = true;
+      }
+      
+      // Get form data
+      const formData = new FormData(this);
+      const contactData = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        subject: formData.get('subject'),
+        message: formData.get('message')
+      };
+      
+      try {
+        // Simulate API call (replace with actual endpoint)
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        // Show success message
+        if (window.HealthAI && window.HealthAI.showNotification) {
+          window.HealthAI.showNotification(
+            'Message sent successfully! We\'ll get back to you within 24 hours.',
+            'success',
+            5000
+          );
+        } else {
+          alert('Message sent successfully! We\'ll get back to you within 24 hours.');
+        }
+        
+        // Reset form
+        this.reset();
+        
+      } catch (error) {
+        if (window.HealthAI && window.HealthAI.showNotification) {
+          window.HealthAI.showNotification(
+            'Failed to send message. Please try again or contact us directly.',
+            'error',
+            5000
+          );
+        } else {
+          alert('Failed to send message. Please try again or contact us directly.');
+        }
+      } finally {
+        // Reset button state only if elements exist
+        if (btnText && btnLoading && submitBtn) {
+          btnText.style.display = 'inline-block';
+          btnLoading.style.display = 'none';
+          submitBtn.disabled = false;
+        }
+      }
+    });
+
+    // Initialize theme toggle when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeThemeToggle();
+    });
+
+    // Loading Messages
+    const loadingMessages = [
+      "Analyzing your symptoms...",
+      "Consulting medical database...",
+      "Finding relevant specialists...",
+      "Locating nearby hospitals...",
+      "Generating recommendations...",
+      "Finalizing your health report..."
+    ];
+
+    let loadingIndex = 0;
+    let loadingInterval;
+
+    function startLoadingAnimation() {
+      const overlay = document.getElementById('loadingOverlay');
+      const loadingText = document.getElementById('loadingText');
+      
+      overlay.style.display = 'flex';
+      loadingIndex = 0;
+      
+      loadingInterval = setInterval(() => {
+        loadingText.textContent = loadingMessages[loadingIndex];
+        loadingIndex = (loadingIndex + 1) % loadingMessages.length;
+      }, 2000);
+    }
+
+    function stopLoadingAnimation() {
+      const overlay = document.getElementById('loadingOverlay');
+      overlay.style.display = 'none';
+      
+      if (loadingInterval) {
+        clearInterval(loadingInterval);
+      }
+    }
+
+    // Global variable to store current diagnosis for AI chat
+    let currentDiagnosis = {
+      condition: null,
+      probability: null,
+      department: null,
+      patient_context: {}
+    };
+
+    // Global variable to store chat history for conversation context
+    let chatHistory = [];
+
+    // Function to update chat suggestions based on diagnosis
+    function updateChatSuggestions() {
+      const suggestionsContainer = document.getElementById('chatSuggestions');
+      if (!suggestionsContainer) return;
+      
+      if (currentDiagnosis.condition) {
+        // Show diet-related suggestions after diagnosis
+        suggestionsContainer.innerHTML = `
+          <button class="suggestion-btn" onclick="document.getElementById('chatInput').value='What diet should I follow for ${currentDiagnosis.condition}?'; sendChatMessageDirect();">🍎 Diet recommendations</button>
+          <button class="suggestion-btn" onclick="document.getElementById('chatInput').value='What foods should I avoid?'; sendChatMessageDirect();">🚫 Foods to avoid</button>
+          <button class="suggestion-btn" onclick="document.getElementById('chatInput').value='What should I eat to recover faster?'; sendChatMessageDirect();">⚡ Foods for recovery</button>
+          <button class="suggestion-btn" onclick="document.getElementById('chatInput').value='Are there any home remedies?'; sendChatMessageDirect();">🏠 Home remedies</button>
+        `;
+      } else {
+        // Default suggestions
+        suggestionsContainer.innerHTML = `
+          <button class="suggestion-btn" onclick="document.getElementById('chatInput').value='What should I do next?'; sendChatMessageDirect();">What should I do next?</button>
+          <button class="suggestion-btn" onclick="document.getElementById('chatInput').value='Are there any home remedies?'; sendChatMessageDirect();">Are there any home remedies?</button>
+          <button class="suggestion-btn" onclick="document.getElementById('chatInput').value='When should I see a doctor?'; sendChatMessageDirect();">When should I see a doctor?</button>
+        `;
+      }
+    }
+
+    // Drag and Drop for File Upload
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('reportUpload');
+
+    uploadArea.addEventListener('click', () => fileInput.click());
+    
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('drag-over');
+    });
+
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.classList.remove('drag-over');
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('drag-over');
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        fileInput.files = files;
+        handleFileUpload(files[0]);
+      }
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) {
+        handleFileUpload(e.target.files[0]);
+      }
+    });
+
+    function handleFileUpload(file) {
+      const uploadContent = uploadArea.querySelector('.upload-content');
+      const scanButton = document.getElementById('scanReport');
+      
+      uploadContent.innerHTML = `
+        <i class="fas fa-file-check"></i>
+        <p><strong>${file.name}</strong></p>
+        <span>File ready to scan</span>
+        <small>${(file.size / 1024 / 1024).toFixed(2)} MB</small>
+      `;
+      
+      uploadArea.classList.add('file-selected');
+      scanButton.style.display = 'block';
+    }
+    // Function to get coordinates from place name using Nominatim API
+    async function getCoordinatesFromPlace(placeName) {
+      try {
+        const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(placeName)}&limit=1`);
+        const data = await response.json();
+        
+        if (data && data.length > 0) {
+          return {
+            lat: parseFloat(data[0].lat),
+            lon: parseFloat(data[0].lon)
+          };
+        } else {
+          throw new Error('Place not found');
+        }
+      } catch (error) {
+        throw new Error('Failed to find location: ' + error.message);
+      }
+    }
+
+    // Function to get current location using browser geolocation
+    function getCurrentLocation() {
+      return new Promise((resolve, reject) => {
+        if (!navigator.geolocation) {
+          reject(new Error('Geolocation is not supported by this browser'));
+          return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            resolve({
+              lat: position.coords.latitude,
+              lon: position.coords.longitude
+            });
+          },
+          (error) => {
+            let errorMessage = 'Unable to get location: ';
+            switch (error.code) {
+              case error.PERMISSION_DENIED:
+                errorMessage += 'Location access denied by user';
+                break;
+              case error.POSITION_UNAVAILABLE:
+                errorMessage += 'Location information unavailable';
+                break;
+              case error.TIMEOUT:
+                errorMessage += 'Location request timed out';
+                break;
+              default:
+                errorMessage += 'Unknown error occurred';
+                break;
+            }
+            reject(new Error(errorMessage));
+          },
+          {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 60000
+          }
+        );
+      });
+    }
+
+    // Handle current location button click
+    document.getElementById("useCurrentLocation").addEventListener("click", async () => {
+      const locationInput = document.getElementById("location");
+      const button = document.getElementById("useCurrentLocation");
+      
+      button.textContent = "🔄 Getting location...";
+      button.disabled = true;
+      
+      try {
+        const coords = await getCurrentLocation();
+        locationInput.value = `${coords.lat.toFixed(6)}, ${coords.lon.toFixed(6)}`;
+        locationInput.setAttribute('data-lat', coords.lat);
+        locationInput.setAttribute('data-lon', coords.lon);
+        button.textContent = "✅ Location found!";
+        setTimeout(() => {
+          button.textContent = "📍 Use My Current Location";
+          button.disabled = false;
+        }, 2000);
+      } catch (error) {
+        alert(error.message);
+        button.textContent = "📍 Use My Current Location";
+        button.disabled = false;
+      }
+    });
+
+    // Handle form submission
+    document.getElementById("symptomForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const text = document.getElementById("text").value;
+      const locationInput = document.getElementById("location");
+      const locationValue = locationInput.value;
+      
+      // Get patient information
+      const patientAge = document.getElementById("patientAge").value;
+      const patientGender = document.getElementById("patientGender").value;
+      const chronicConditionsText = document.getElementById("chronicConditions").value;
+      
+      // Parse chronic conditions (comma separated)
+      const chronicConditions = chronicConditionsText 
+        ? chronicConditionsText.split(',').map(c => c.trim()).filter(c => c)
+        : [];
+
+      let lat, lon;
+
+      // Check if coordinates are already stored (from current location)
+      if (locationInput.hasAttribute('data-lat') && locationInput.hasAttribute('data-lon')) {
+        lat = parseFloat(locationInput.getAttribute('data-lat'));
+        lon = parseFloat(locationInput.getAttribute('data-lon'));
+      } else {
+        // Check if the input looks like coordinates (contains comma and numbers)
+        const coordPattern = /^-?\d+\.?\d*\s*,\s*-?\d+\.?\d*$/;
+        if (coordPattern.test(locationValue)) {
+          const coords = locationValue.split(',');
+          lat = parseFloat(coords[0].trim());
+          lon = parseFloat(coords[1].trim());
+        } else {
+          // Treat as place name and geocode it
+          try {
+            const resultDiv = document.getElementById("result");
+            const resultsContent = resultDiv.querySelector('.results-content');
+            resultDiv.style.display = "block";
+            resultsContent.innerHTML = "<p>🔍 Finding location...</p>";
+            
+            const coords = await getCoordinatesFromPlace(locationValue);
+            lat = coords.lat;
+            lon = coords.lon;
+          } catch (error) {
+            const resultDiv = document.getElementById("result");
+            const resultsContent = resultDiv.querySelector('.results-content');
+            resultDiv.style.display = "block";
+            resultsContent.innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
+            return;
+          }
+        }
+      }
+
+      // Show processing message
+      const resultDiv = document.getElementById("result");
+      const resultsContent = resultDiv.querySelector('.results-content');
+      resultDiv.style.display = "block";
+      resultsContent.innerHTML = "<p>🔍 Analyzing symptoms...</p>";
+
+      try {
+        console.log('Making API call to:', "http://localhost:5000/api/query");
+        const response = await fetch("http://localhost:5000/api/query", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ 
+            text: text, 
+            lat: lat || 28.61,
+            lon: lon || 77.20,
+            patient_context: {
+              age: patientAge ? parseInt(patientAge) : 30,
+              gender: patientGender || "unknown",
+              chronic_conditions: chronicConditions
+            }
+          }),
+        });
+
+        console.log('Response status:', response.status);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        console.log("API Response:", data); // Debug log
+        console.log("Response status field:", data.status); // Debug specific field
+        console.log("Response success field:", data.success); // Debug success field
+
+        // Store diagnosis for AI chat
+        if (data.disease_predictions && data.disease_predictions.length > 0) {
+          const topPrediction = data.disease_predictions[0];
+          currentDiagnosis = {
+            condition: topPrediction.disease,
+            probability: topPrediction.probability,
+            department: topPrediction.department,
+            patient_context: {
+              age: patientAge ? parseInt(patientAge) : null,
+              gender: patientGender || null,
+              chronic_conditions: chronicConditions
+            }
+          };
+          console.log('Stored diagnosis for AI:', currentDiagnosis);
+          
+          // Reset and initialize chat history with diagnosis context
+          chatHistory = [];
+          
+          // Add initial context message to help AI understand
+          const contextMessage = `Patient has been diagnosed with ${topPrediction.disease} with ${topPrediction.probability}% probability. `;
+          let symptomsList = data.input_symptoms ? data.input_symptoms.join(', ') : text;
+          const fullContext = contextMessage + `Symptoms: ${symptomsList}.`;
+          
+          if (patientAge || patientGender || chronicConditions.length > 0) {
+            let patientInfo = [];
+            if (patientAge) patientInfo.push(`Age: ${patientAge}`);
+            if (patientGender && patientGender !== 'unknown') patientInfo.push(`Gender: ${patientGender}`);
+            if (chronicConditions.length > 0) patientInfo.push(`Chronic conditions: ${chronicConditions.join(', ')}`);
+            
+            chatHistory.push({
+              role: "system",
+              content: fullContext + ` Patient info: ${patientInfo.join(', ')}.`
+            });
+          } else {
+            chatHistory.push({
+              role: "system", 
+              content: fullContext
+            });
+          }
+          
+          console.log('Initialized chat history with diagnosis context');
+          
+          // Update chat suggestions with diet recommendations
+          updateChatSuggestions();
+        }
+
+        if (data.error || data.status === 'error') {
+          const resultsContent = resultDiv.querySelector('.results-content');
+          resultsContent.innerHTML = `<p style="color:red;">Error: ${data.message || data.error}</p>`;
+          return;
+        }
+
+        let html = '';
+        
+        // Handle Professional Disease Prediction Results
+        if (data.professional_analysis_enabled && data.disease_predictions && data.disease_predictions.length > 0) {
+          html += `<div class="professional-analysis">`;
+          html += `<h3>🩺 Professional Medical Analysis</h3>`;
+          
+          // Summary
+          if (data.professional_analysis && data.professional_analysis.summary) {
+            html += `<div class="analysis-summary">`;
+            html += `<h4>📋 Clinical Assessment</h4>`;
+            html += `<p>${data.professional_analysis.summary}</p>`;
+            html += `</div>`;
+          }
+          
+          // Primary Diagnosis
+          const topPrediction = data.disease_predictions[0];
+          html += `<div class="primary-diagnosis">`;
+          html += `<h4>🎯 Primary Diagnosis</h4>`;
+          html += `<div class="diagnosis-card">`;
+          html += `<div class="diagnosis-header">`;
+          html += `<strong>${topPrediction.disease}</strong>`;
+          html += `<span class="probability-badge">${topPrediction.probability}% probability</span>`;
+          html += `</div>`;
+          html += `<p class="description">${topPrediction.description}</p>`;
+          html += `<div class="diagnosis-details">`;
+          html += `<p><b>Confidence:</b> ${topPrediction.confidence}%</p>`;
+          html += `<p><b>Department:</b> ${topPrediction.department}</p>`;
+          html += `<p><b>Urgency:</b> ${data.professional_analysis.urgency || topPrediction.severity}</p>`;
+          html += `<p><b>Symptoms Matched:</b> ${topPrediction.matched_symptoms} of ${topPrediction.total_symptoms}</p>`;
+          
+          if (topPrediction.has_critical_symptoms) {
+            html += `<div class="critical-warning">⚠️ Critical symptoms detected</div>`;
+          }
+          
+          html += `</div>`;
+          
+          // Treatment info
+          if (topPrediction.treatment_info && topPrediction.treatment_info.length > 0) {
+            html += `<div class="treatment-info">`;
+            html += `<h5>💊 Treatment Options:</h5>`;
+            html += `<ul>`;
+            topPrediction.treatment_info.forEach(treatment => {
+              html += `<li>${treatment}</li>`;
+            });
+            html += `</ul>`;
+            html += `</div>`;
+          }
+          
+          // When to see doctor
+          if (topPrediction.when_to_see_doctor) {
+            html += `<div class="doctor-advice">`;
+            html += `<p><b>⏰ When to See Doctor:</b> ${topPrediction.when_to_see_doctor}</p>`;
+            html += `</div>`;
+          }
+          
+          html += `</div></div>`;
+          
+          // Differential Diagnosis (Other Possibilities)
+          if (data.disease_predictions.length > 1) {
+            html += `<div class="differential-diagnosis">`;
+            html += `<h4>🔍 Differential Diagnosis</h4>`;
+            html += `<p class="diff-intro">Other possible conditions to consider:</p>`;
+            
+            for (let i = 1; i < Math.min(data.disease_predictions.length, 5); i++) {
+              const pred = data.disease_predictions[i];
+              html += `<div class="diagnosis-option">`;
+              html += `<div class="option-header">`;
+              html += `<span class="option-name">${pred.disease}</span>`;
+              html += `<span class="probability-small">${pred.probability}%</span>`;
+              html += `</div>`;
+              html += `<div class="option-details">`;
+              html += `<p>${pred.description}</p>`;
+              html += `<small>Confidence: ${pred.confidence}% | Department: ${pred.department}</small>`;
+              html += `</div>`;
+              html += `</div>`;
+            }
+            html += `</div>`;
+          }
+          
+          // Professional Recommendations
+          if (data.professional_analysis) {
+            html += `<div class="recommendations-section">`;
+            html += `<h4>📝 Medical Recommendations</h4>`;
+            html += `<div class="recommendation-box">`;
+            html += `<p><b>Next Steps:</b> ${data.professional_analysis.recommendation}</p>`;
+            if (data.professional_analysis.next_steps) {
+              html += `<p><b>Action Plan:</b> ${data.professional_analysis.next_steps}</p>`;
+            }
+            html += `</div>`;
+            html += `</div>`;
+          }
+          
+          // Symptoms Analysis
+          if (data.input_symptoms && data.input_symptoms.length > 0) {
+            html += `<div class="symptoms-analysis">`;
+            html += `<h4>📊 Symptoms Analyzed</h4>`;
+            html += `<div class="symptoms-list">`;
+            data.input_symptoms.forEach(symptom => {
+              html += `<span class="symptom-tag">${symptom}</span>`;
+            });
+            html += `</div>`;
+            html += `</div>`;
+          }
+          
+          html += `</div>`; // Close professional-analysis div
+        }
+        // Handle the actual API response structure - check for success field or analysis object
+        else if (data.success || data.analysis || data.status === 'success' || data.status === 'emergency' || data.status === 'unknown' || data.condition || data.severity) {
+          html += `<h3>🏥 Medical Analysis</h3>`;
+          
+          // Handle new API structure with analysis object
+          if (data.analysis && data.analysis.triage) {
+            const triage = data.analysis.triage;
+            
+            // Map urgency to user-friendly display
+            const urgencyMap = {
+              'self_monitoring': '🟢 Self-Monitoring',
+              'GP': '🟡 See Doctor',
+              'urgent': '🟠 Urgent Care',
+              'emergency': '🔴 Emergency'
+            };
+            
+            const urgency = triage.urgency || triage.urgency_level || 'GP';
+            const displayUrgency = urgencyMap[urgency] || `🟡 ${urgency}`;
+            
+            html += `<p><b>Priority:</b> ${displayUrgency}</p>`;
+            
+            if (triage.assessment) {
+              html += `<p><b>Assessment:</b> ${triage.assessment}</p>`;
+            }
+            
+            if (triage.department) {
+              html += `<p><b>Recommended Department:</b> ${triage.department}</p>`;
+            }
+            
+            if (triage.potential_conditions && triage.potential_conditions.length > 0) {
+              html += `<p><b>Potential Conditions:</b> ${triage.potential_conditions.join(', ')}</p>`;
+            }
+            
+            if (triage.notes) {
+              html += `<p><b>Medical Notes:</b> ${triage.notes}</p>`;
+            }
+            
+            // Display recommendations
+            if (triage.recommendations && triage.recommendations.length > 0) {
+              html += `<h4>📋 Recommendations:</h4>`;
+              html += `<ul>`;
+              triage.recommendations.forEach(rec => {
+                html += `<li>${rec}</li>`;
+              });
+              html += `</ul>`;
+            }
+            
+            // Display follow-up questions
+            if (triage.follow_up_questions && triage.follow_up_questions.length > 0) {
+              html += `<h4>❓ Consider These Questions:</h4>`;
+              html += `<ul>`;
+              triage.follow_up_questions.forEach(question => {
+                html += `<li>${question}</li>`;
+              });
+              html += `</ul>`;
+            }
+          } else {
+            // Fallback for old API structure
+            const severityMap = {
+              'low': '🟢 Low Priority',
+              'medium': '🟡 See Doctor',
+              'high': '🔴 Emergency',
+              'GP': '🟡 See Doctor',
+              'emergency': '🔴 Emergency'
+            };
+            
+            const severity = data.severity || 'medium';
+            const displaySeverity = severityMap[severity] || `🟡 ${severity}`;
+            
+            html += `<p><b>Status:</b> ${displaySeverity}</p>`;
+            
+            if (data.condition) {
+              html += `<p><b>Condition:</b> ${data.condition}</p>`;
+            }
+            
+            if (data.department) {
+              html += `<p><b>Recommended Department:</b> ${data.department}</p>`;
+            }
+            
+            if (data.notes) {
+              html += `<p><b>Notes:</b> ${data.notes}</p>`;
+            }
+          }
+          
+          // Handle recognized symptoms
+          if (data.symptoms && data.symptoms.length > 0) {
+            html += `<p><b>Recognized Symptoms:</b> ${data.symptoms.join(', ')}</p>`;
+          } else if (data.analysis && data.analysis.symptoms && data.analysis.symptoms.symptoms && data.analysis.symptoms.symptoms.length > 0) {
+            html += `<p><b>Recognized Symptoms:</b> ${data.analysis.symptoms.symptoms.join(', ')}</p>`;
+          }
+        }
+
+        // Display medicine recommendations
+        if (data.medicine_recommendations && Object.keys(data.medicine_recommendations).length > 0) {
+          console.log("Processing medicine recommendations:", data.medicine_recommendations); // Debug log
+          html += `<h3>💊 Medicine Recommendations</h3>`;
+          
+          for (const [condition, recommendations] of Object.entries(data.medicine_recommendations)) {
+            if (recommendations.success && recommendations.recommendations.length > 0) {
+              html += `<div class="medicine-section">`;
+              html += `<h4>For ${condition}:</h4>`;
+              
+              recommendations.recommendations.forEach(med => {
+                const safetyIcon = med.safety_check.safe ? '✅' : '⚠️';
+                const otcIcon = med.otc_available ? '🏪' : '👨‍⚕️';
+                
+                html += `
+                  <div class="medicine-item">
+                    <div class="medicine-header">
+                      <strong>${safetyIcon} ${med.medicine_name}</strong> ${otcIcon}
+                      ${med.brand_names.length > 0 ? `<br><small>Brands: ${med.brand_names.join(', ')}</small>` : ''}
+                    </div>
+                    <div class="medicine-details">
+                      <p><b>Type:</b> ${med.type}</p>
+                `;
+                
+                if (med.dosage && med.dosage.adult) {
+                  html += `<p><b>Dosage:</b> ${med.dosage.adult}</p>`;
+                }
+                
+                if (med.side_effects && med.side_effects.length > 0) {
+                  html += `<p><b>Common Side Effects:</b> ${med.side_effects.slice(0, 3).join(', ')}</p>`;
+                }
+                
+                // Safety warnings
+                if (med.safety_check.warnings && med.safety_check.warnings.length > 0) {
+                  html += `<div class="safety-warnings">`;
+                  med.safety_check.warnings.forEach(warning => {
+                    html += `<p class="warning">⚠️ ${warning}</p>`;
+                  });
+                  html += `</div>`;
+                }
+                
+                html += `</div></div>`;
+              });
+              
+              // Display disclaimers
+              if (recommendations.disclaimers && recommendations.disclaimers.length > 0) {
+                html += `<div class="disclaimers">`;
+                html += `<h5>Important:</h5>`;
+                recommendations.disclaimers.forEach(disclaimer => {
+                  html += `<p class="disclaimer">${disclaimer}</p>`;
+                });
+                html += `</div>`;
+              }
+              
+              html += `</div>`;
+            }
+          }
+        }
+
+        // Hospitals are handled in separate section - removed from here
+
+        // Fallback: if no HTML was generated, show a clean message instead of raw JSON
+        if (!html.trim()) {
+          html = `<h3>🏥 Medical Analysis Complete</h3>`;
+          html += `<p><b>Status:</b> ✅ Analysis received successfully</p>`;
+          
+          if (data.success) {
+            html += `<p><b>Response:</b> The medical analysis has been processed.</p>`;
+          }
+          
+          if (data.analysis) {
+            html += `<p><b>Analysis Type:</b> Comprehensive medical evaluation</p>`;
+          }
+          
+          html += `<div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 10px 0; border-left: 4px solid #007bff;">`;
+          html += `<p><b>📋 General Recommendations:</b></p>`;
+          html += `<ul>`;
+          html += `<li>Monitor your symptoms closely</li>`;
+          html += `<li>Consider consulting with a healthcare professional</li>`;
+          html += `<li>Keep track of any changes in your condition</li>`;
+          html += `<li>Seek immediate care if symptoms worsen</li>`;
+          html += `</ul>`;
+          html += `</div>`;
+          
+          html += `<p style="color: #666; font-size: 14px; margin-top: 15px;">`;
+          html += `<b>Note:</b> This analysis is for informational purposes only. Always consult with qualified healthcare professionals for medical advice.`;
+          html += `</p>`;
+        }
+
+        // Display results in separate section
+        const analysisResults = document.getElementById('analysisResults');
+        analysisResults.innerHTML = html;
+        
+        // Show the results section
+        document.getElementById('results').style.display = 'block';
+        
+        // Scroll to results section smoothly
+        setTimeout(() => {
+          document.getElementById('results').scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }, 300);
+        
+        // Hide the inline results and show success message in form
+        const resultsContent = resultDiv.querySelector('.results-content');
+        resultsContent.innerHTML = `<p style="color: green; text-align: center; padding: 1rem;">
+          <i class="fas fa-check-circle"></i> Analysis complete! <a href="#results" style="color: var(--primary);">View results below</a>
+        </p>`;
+        
+      } catch (error) {
+        console.error('API Error:', error);
+        const resultsContent = resultDiv.querySelector('.results-content');
+        resultsContent.innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
+        
+        // Try to show more specific error information
+        if (error.name === 'TypeError' && error.message.includes('fetch')) {
+          resultsContent.innerHTML = `<p style="color:red;">Failed to connect to server. Please ensure the backend is running on port 5000.</p>`;
+        }
+      }
+    });
+
+    // Print Results Function
+    function printResults() {
+      const modalResultsContent = document.querySelector('.modal-results-content');
+      if (!modalResultsContent || !modalResultsContent.innerHTML.trim()) {
+        alert('No results to print. Please analyze symptoms first.');
+        return;
+      }
+      
+      const printWindow = window.open('', '_blank');
+      printWindow.document.write(`
+        <html>
+          <head>
+            <title>Medical Analysis Results</title>
+            <style>
+              body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+              h3 { color: #2c3e50; margin-top: 20px; }
+              h4 { color: #34495e; margin-top: 15px; }
+              .medicine-item { border: 1px solid #ddd; padding: 10px; margin: 10px 0; }
+              .warning { color: #e74c3c; font-weight: bold; }
+              .disclaimer { color: #7f8c8d; font-style: italic; }
+              .hospital { border: 1px solid #ddd; padding: 10px; margin: 5px 0; }
+              ul { padding-left: 20px; }
+              li { margin-bottom: 5px; }
+            </style>
+          </head>
+          <body>
+            <h1>Medical Analysis Results</h1>
+            <p><strong>Generated on:</strong> ${new Date().toLocaleString()}</p>
+            ${modalResultsContent.innerHTML}
+            <hr>
+            <p style="color: #7f8c8d; font-size: 12px;">
+              <strong>Disclaimer:</strong> This information is for educational purposes only. 
+              Always consult with qualified healthcare professionals for medical advice.
+            </p>
+          </body>
+        </html>
+      `);
+      printWindow.document.close();
+      printWindow.print();
+    }
+
+    // Section Functions
+    let currentSpeech = null;
+    
+    function backToForm() {
+      document.getElementById('hero').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+
+    function hideResultsSection() {
+      document.getElementById('results').style.display = 'none';
+    }
+
+    // Print Results Function
+    function printSectionResults() {
+      const analysisResults = document.getElementById('analysisResults');
+      if (!analysisResults || !analysisResults.innerHTML.trim()) {
+        alert('No results to print. Please analyze symptoms first.');
+        return;
+      }
+      
+      const printWindow = window.open('', '_blank');
+      printWindow.document.write(`
+        <html>
+          <head>
+            <title>Medical Analysis Results</title>
+            <style>
+              body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+              h3 { color: #2c3e50; margin-top: 20px; }
+              h4 { color: #34495e; margin-top: 15px; }
+              .medicine-item { border: 1px solid #ddd; padding: 10px; margin: 10px 0; }
+              .warning { color: #e74c3c; font-weight: bold; }
+              .disclaimer { color: #7f8c8d; font-style: italic; }
+              .hospital { border: 1px solid #ddd; padding: 10px; margin: 5px 0; }
+              ul { padding-left: 20px; }
+              li { margin-bottom: 5px; }
+            </style>
+          </head>
+          <body>
+            <h1>Medical Analysis Results</h1>
+            <p><strong>Generated on:</strong> ${new Date().toLocaleString()}</p>
+            ${analysisResults.innerHTML}
+            <hr>
+            <p style="color: #7f8c8d; font-size: 12px;">
+              <strong>Disclaimer:</strong> This information is for educational purposes only. 
+              Always consult with qualified healthcare professionals for medical advice.
+            </p>
+          </body>
+        </html>
+      `);
+      printWindow.document.close();
+      printWindow.print();
+    }
+
+    // Listen functionality for section
+    function speakSectionResults() {
+      if ('speechSynthesis' in window) {
+        const analysisResults = document.getElementById('analysisResults');
+        if (!analysisResults) return;
+        
+        // Stop any ongoing speech
+        if (currentSpeech) {
+          speechSynthesis.cancel();
+          currentSpeech = null;
+        }
+        
+        // Get text content without HTML tags
+        const textToSpeak = analysisResults.innerText || analysisResults.textContent;
+        
+        if (textToSpeak.trim()) {
+          currentSpeech = new SpeechSynthesisUtterance(textToSpeak);
+          currentSpeech.rate = 0.8;
+          currentSpeech.pitch = 1;
+          currentSpeech.volume = 1;
+          
+          const speakBtn = document.getElementById('sectionSpeakBtn');
+          const stopBtn = document.getElementById('sectionStopBtn');
+          
+          currentSpeech.onstart = function() {
+            if (speakBtn && stopBtn) {
+              speakBtn.style.display = 'none';
+              stopBtn.style.display = 'inline-block';
+            }
+          };
+          
+          currentSpeech.onend = function() {
+            if (speakBtn && stopBtn) {
+              speakBtn.style.display = 'inline-block';
+              stopBtn.style.display = 'none';
+            }
+            currentSpeech = null;
+          };
+          
+          currentSpeech.onerror = function() {
+            if (speakBtn && stopBtn) {
+              speakBtn.style.display = 'inline-block';
+              stopBtn.style.display = 'none';
+            }
+            currentSpeech = null;
+          };
+          
+          speechSynthesis.speak(currentSpeech);
+        }
+      } else {
+        alert('Speech synthesis not supported in this browser.');
+      }
+    }
+    
+    function stopSectionSpeech() {
+      if (currentSpeech) {
+        speechSynthesis.cancel();
+        currentSpeech = null;
+        
+        const speakBtn = document.getElementById('sectionSpeakBtn');
+        const stopBtn = document.getElementById('sectionStopBtn');
+        
+        if (speakBtn && stopBtn) {
+          speakBtn.style.display = 'inline-block';
+          stopBtn.style.display = 'none';
+        }
+      }
+    }
+
+    // Voice Input Functionality
+    let recognition;
+    let isListening = false;
+
+    // Check if browser supports speech recognition
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      recognition = new SpeechRecognition();
+      
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = 'en-US';
+      
+      recognition.onstart = function() {
+        isListening = true;
+        const btn = document.getElementById('voiceInput');
+        btn.innerHTML = '<i class="fas fa-microphone-slash"></i><span>Listening...</span>';
+        btn.style.background = 'linear-gradient(135deg, #dc2626, #b91c1c)';
+      };
+      
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById('text').value = transcript;
+        
+        const btn = document.getElementById('voiceInput');
+        btn.innerHTML = '<i class="fas fa-microphone"></i><span>Voice Input</span>';
+        btn.style.background = '';
+        
+        // Auto-fill location if mentioned in speech
+        if (transcript.toLowerCase().includes('in ') || transcript.toLowerCase().includes('at ')) {
+          const locationMatch = transcript.match(/(?:in|at)\s+([^.!?]+)/i);
+          if (locationMatch && !document.getElementById('location').value) {
+            document.getElementById('location').value = locationMatch[1].trim();
+          }
+        }
+      };
+      
+      recognition.onerror = function(event) {
+        console.error('Speech recognition error:', event.error);
+        const btn = document.getElementById('voiceInput');
+        btn.innerHTML = '<i class="fas fa-microphone"></i><span>Voice Input</span>';
+        btn.style.background = '';
+        isListening = false;
+      };
+      
+      recognition.onend = function() {
+        isListening = false;
+        const btn = document.getElementById('voiceInput');
+        btn.innerHTML = '<i class="fas fa-microphone"></i><span>Voice Input</span>';
+        btn.style.background = '';
+      };
+    } else {
+      // Hide voice input button if not supported
+      document.getElementById('voiceInput').style.display = 'none';
+    }
+
+    // Voice Input Button Click
+    document.getElementById('voiceInput').addEventListener('click', function() {
+      if (!recognition) {
+        alert('Speech recognition is not supported in your browser');
+        return;
+      }
+      
+      if (isListening) {
+        recognition.stop();
+      } else {
+        recognition.start();
+      }
+    });
+
+    // Current Location Button
+    document.getElementById("useCurrentLocation").addEventListener("click", async () => {
+      const locationInput = document.getElementById("location");
+      const button = document.getElementById("useCurrentLocation");
+      
+      button.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Getting location...</span>';
+      button.disabled = true;
+      
+      try {
+        const coords = await getCurrentLocation();
+        locationInput.value = `${coords.lat.toFixed(6)}, ${coords.lon.toFixed(6)}`;
+        locationInput.setAttribute('data-lat', coords.lat);
+        locationInput.setAttribute('data-lon', coords.lon);
+        button.innerHTML = '<i class="fas fa-check"></i><span>Location found!</span>';
+        setTimeout(() => {
+          button.innerHTML = '<i class="fas fa-crosshairs"></i><span>Use Current Location</span>';
+          button.disabled = false;
+        }, 2000);
+      } catch (error) {
+        alert(error.message);
+        button.innerHTML = '<i class="fas fa-crosshairs"></i><span>Use Current Location</span>';
+        button.disabled = false;
+      }
+    });
+
+    // Text-to-Speech Functionality
+    function speakText(text) {
+      if ('speechSynthesis' in window) {
+        speechSynthesis.cancel();
+        
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.8;
+        utterance.pitch = 1;
+        utterance.volume = 0.8;
+        
+        const speakBtn = document.getElementById('speakResponse');
+        const stopBtn = document.getElementById('stopSpeaking');
+        
+        utterance.onstart = function() {
+          stopBtn.style.display = 'inline-flex';
+          speakBtn.innerHTML = '<i class="fas fa-volume-up"></i><span>Speaking...</span>';
+          speakBtn.disabled = true;
+        };
+        
+        utterance.onend = function() {
+          stopBtn.style.display = 'none';
+          speakBtn.innerHTML = '<i class="fas fa-volume-up"></i><span>Listen to Results</span>';
+          speakBtn.disabled = false;
+        };
+        
+        utterance.onerror = function() {
+          stopBtn.style.display = 'none';
+          speakBtn.innerHTML = '<i class="fas fa-volume-up"></i><span>Listen to Results</span>';
+          speakBtn.disabled = false;
+        };
+        
+        const voices = speechSynthesis.getVoices();
+        const preferredVoice = voices.find(voice => 
+          voice.lang.startsWith('en') && 
+          (voice.name.includes('Female') || voice.name.includes('Male'))
+        );
+        
+        if (preferredVoice) {
+          utterance.voice = preferredVoice;
+        }
+        
+        speechSynthesis.speak(utterance);
+      } else {
+        alert('Text-to-speech is not supported in your browser');
+      }
+    }
+
+    // Speak Response Button
+    const speakResponseBtn = document.getElementById('speakResponse');
+    if (speakResponseBtn) {
+      speakResponseBtn.addEventListener('click', function() {
+        const resultContent = document.querySelector('.result-content');
+        const textContent = resultContent ? (resultContent.textContent || resultContent.innerText) : '';
+        
+        if (textContent.trim()) {
+          let cleanText = textContent
+            .replace(/Medical Analysis/g, 'Medical analysis shows: ')
+            .replace(/Assessment:/g, 'Assessment is: ')
+          .replace(/Potential Conditions:/g, 'Potential conditions include: ')
+          .replace(/Recommended Department:/g, 'You should visit: ')
+          .replace(/Medicine Recommendations/g, 'Medicine recommendations: ')
+          .replace(/Nearby Hospitals/g, 'Nearby hospitals: ')
+          .replace(/Contact:/g, 'Contact number: ')
+          .replace(/Distance:/g, 'Distance: ')
+          .replace(/km/g, 'kilometers')
+          .replace(/\s+/g, ' ')
+          .trim();
+          
+        speakText(cleanText);
+      }
+      });
+    }
+
+    // Stop Speaking Button
+    const stopSpeakingBtn = document.getElementById('stopSpeaking');
+    if (stopSpeakingBtn) {
+      stopSpeakingBtn.addEventListener('click', function() {
+        if ('speechSynthesis' in window) {
+          speechSynthesis.cancel();
+        
+          const speakBtn = document.getElementById('speakResponse');
+          const stopBtn = document.getElementById('stopSpeaking');
+          
+          if (stopBtn) stopBtn.style.display = 'none';
+          if (speakBtn) {
+            speakBtn.innerHTML = '<i class="fas fa-volume-up"></i><span>Listen to Results</span>';
+            speakBtn.disabled = false;
+          }
+        }
+      });
+    }
+
+    // Scan Report Button
+    const scanReportBtn = document.getElementById('scanReport');
+    if (scanReportBtn) {
+      scanReportBtn.addEventListener('click', async function() {
+        const fileInput = document.getElementById('reportUpload');
+        const file = fileInput ? fileInput.files[0] : null;
+      
+      if (!file) {
+        alert('Please select a file first');
+        return;
+      }
+      
+      const formData = new FormData();
+      formData.append('report', file);
+      
+      try {
+        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Scanning...</span>';
+        this.disabled = true;
+        
+        const response = await fetch('http://localhost:5000/api/scan-report', {
+          method: 'POST',
+          body: formData
+        });
+        
+        const data = await response.json();
+        
+        if (data.error) {
+          alert('Error scanning report: ' + data.error);
+        } else {
+          const currentSymptoms = document.getElementById('text').value;
+          const extractedText = data.extracted_text || '';
+          const analysisText = data.medical_analysis || '';
+          
+          const combinedText = currentSymptoms + 
+            (currentSymptoms ? '\n\n' : '') + 
+            'From medical report: ' + extractedText +
+            (analysisText ? '\n\nAnalysis: ' + analysisText : '');
+          
+          document.getElementById('text').value = combinedText;
+          
+          // Update upload area to show success
+          const uploadContent = uploadArea.querySelector('.upload-content');
+          uploadContent.innerHTML = `
+            <i class="fas fa-check-circle" style="color: var(--success-color);"></i>
+            <p><strong>Report Scanned Successfully!</strong></p>
+            <span>Information added to symptoms</span>
+            <small>You can now analyze your symptoms</small>
+          `;
+        }
+        
+      } catch (error) {
+        alert('Error scanning report: ' + error.message);
+      } finally {
+        this.innerHTML = '<i class="fas fa-search"></i><span>Scan Report</span>';
+        this.disabled = false;
+      }
+      });
+    }
+
+    // Section Event Listeners
+    document.addEventListener('DOMContentLoaded', function() {
+      const sectionSpeakBtn = document.getElementById('sectionSpeakBtn');
+      const sectionStopBtn = document.getElementById('sectionStopBtn');
+      
+      if (sectionSpeakBtn) {
+        sectionSpeakBtn.addEventListener('click', speakSectionResults);
+      }
+      
+      if (sectionStopBtn) {
+        sectionStopBtn.addEventListener('click', stopSectionSpeech);
+      }
+    });
+
+  </script>
+
+  <!-- Direct Fix for Ask AI Button -->
+  <script>
+    console.log('=== ASK AI BUTTON FIX LOADED ===');
+    
+    window.addEventListener('load', function() {
+      console.log('Page fully loaded, attaching Ask AI button listener');
+      
+      const askBtn = document.getElementById('askAIBtn');
+      const chatInterface = document.getElementById('aiChatInterface');
+      
+      console.log('Ask AI button found:', askBtn !== null);
+      console.log('Chat interface found:', chatInterface !== null);
+      
+      if (askBtn) {
+        // Remove any existing listeners and add new one
+        askBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          console.log('✅ Ask AI button clicked - Opening split view chat');
+          
+          const chatInterface = document.getElementById('aiChatInterface');
+          const splitViewContainer = document.getElementById('splitViewContainer');
+          
+          if (chatInterface && splitViewContainer) {
+            // Show chat interface
+            chatInterface.style.display = 'flex';
+            
+            // Add chat-active class to enable split view
+            splitViewContainer.classList.add('chat-active');
+            
+            console.log('✅ Split view activated');
+            
+            // Focus on input
+            const chatInput = document.getElementById('chatInput');
+            if (chatInput) {
+              setTimeout(() => chatInput.focus(), 100);
+              console.log('✅ Chat input focused');
+            }
+          } else {
+            console.error('❌ Chat interface or split container not found');
+            alert('Error: Chat interface not found. Please refresh the page.');
+          }
+        });
+        console.log('✅ Direct event listener attached to Ask AI button');
+      } else {
+        console.warn('⚠️ Ask AI button not found on page load');
+      }
+      
+      // Also add listener for close button
+      const closeBtn = document.getElementById('closeChatBtn');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          console.log('Closing chat interface');
+          const chatInterface = document.getElementById('aiChatInterface');
+          const splitViewContainer = document.getElementById('splitViewContainer');
+          
+          if (chatInterface) {
+            chatInterface.style.display = 'none';
+          }
+          if (splitViewContainer) {
+            splitViewContainer.classList.remove('chat-active');
+          }
+        });
+        console.log('✅ Close button listener attached');
+      }
+      
+      // Add listener for send button
+      const sendBtn = document.getElementById('sendChatBtn');
+      if (sendBtn) {
+        sendBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          console.log('💬 Send button clicked');
+          sendChatMessageDirect();
+        });
+        console.log('✅ Send button listener attached');
+      }
+      
+      // Add listener for section Ask AI button
+      const askAISectionBtn = document.getElementById('askAIBtnSection');
+      if (askAISectionBtn) {
+        askAISectionBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          console.log('✅ Section Ask AI button clicked');
+          
+          const chatPanel = document.getElementById('aiChatPanel');
+          const splitView = document.getElementById('mainSplitView');
+          
+          if (chatPanel && splitView) {
+            chatPanel.style.display = 'flex';
+            splitView.classList.add('chat-open');
+            console.log('✅ Main split view activated');
+            
+            const chatInput = document.getElementById('chatInputMain');
+            if (chatInput) {
+              setTimeout(() => chatInput.focus(), 100);
+            }
+          }
+        });
+        console.log('✅ Section Ask AI listener attached');
+      }
+      
+      // Close chat panel button
+      const closePanelBtn = document.getElementById('closeChatPanel');
+      if (closePanelBtn) {
+        closePanelBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const chatPanel = document.getElementById('aiChatPanel');
+          const splitView = document.getElementById('mainSplitView');
+          
+          if (chatPanel) chatPanel.style.display = 'none';
+          if (splitView) splitView.classList.remove('chat-open');
+        });
+      }
+      
+      // Send button for main chat
+      const sendBtnMain = document.getElementById('sendChatBtnMain');
+      if (sendBtnMain) {
+        sendBtnMain.addEventListener('click', function(e) {
+          e.preventDefault();
+          sendChatMessageMain();
+        });
+      }
+      
+      // Enter key for main chat
+      const chatInputMain = document.getElementById('chatInputMain');
+      if (chatInputMain) {
+        chatInputMain.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendChatMessageMain();
+          }
+        });
+      }
+      
+      // Voice button for main chat
+      const voiceBtnMain = document.getElementById('voiceChatBtnMain');
+      if (voiceBtnMain) {
+        voiceBtnMain.addEventListener('click', function(e) {
+          e.preventDefault();
+          startVoiceInputMain();
+        });
+      }
+      
+      // Add listener for inline chat send button
+      const sendChatBtn = document.getElementById('sendChatBtn');
+      if (sendChatBtn) {
+        sendChatBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          console.log('💬 Send button clicked (inline chat)');
+          sendChatMessageDirect();
+        });
+        console.log('✅ Inline chat send button listener attached');
+      }
+      
+      // Add listener for chat input enter key (inline chat)
+      const chatInput = document.getElementById('chatInput');
+      if (chatInput) {
+        chatInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            console.log('💬 Enter key pressed in chat');
+            sendChatMessageDirect();
+          }
+        });
+        console.log('✅ Chat input enter key listener attached');
+      }
+      
+      // Add listener for voice button
+      const voiceBtn = document.getElementById('voiceChatBtn');
+      if (voiceBtn) {
+        voiceBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          console.log('🎤 Voice button clicked');
+          startVoiceInput();
+        });
+        console.log('✅ Voice button listener attached');
+      }
+      
+      // Add listeners for suggestion buttons (inline chat)
+      document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('suggestion-btn')) {
+          const question = e.target.getAttribute('data-question') || e.target.textContent;
+          
+          // Check which chat interface is visible
+          const inlineChat = document.getElementById('chatInput');
+          const mainChat = document.getElementById('chatInputMain');
+          const aiChatPanel = document.getElementById('aiChatPanel');
+          
+          // If main chat panel is visible, use it
+          if (aiChatPanel && aiChatPanel.style.display === 'flex' && mainChat) {
+            mainChat.value = question;
+            sendChatMessageMain();
+          } 
+          // Otherwise use inline chat
+          else if (inlineChat) {
+            inlineChat.value = question;
+            sendChatMessageDirect();
+          }
+        }
+      });
+      console.log('✅ Suggestion buttons listener attached');
+    });
+    
+    // Direct send message function
+    function sendChatMessageDirect() {
+      console.log('🚀 sendChatMessageDirect called');
+      const chatInput = document.getElementById('chatInput');
+      const chatMessages = document.getElementById('chatMessages');
+      console.log('chatInput element:', chatInput);
+      console.log('chatMessages element:', chatMessages);
+      const message = chatInput ? chatInput.value.trim() : '';
+      
+      console.log('Message to send:', message);
+      
+      if (!message) {
+        console.warn('Empty message, not sending');
+        return;
+      }
+      
+      // Add user message to chat
+      if (chatMessages) {
+        const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const userMessageHTML = `
+          <div class="chat-message user-message">
+            <div class="message-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="message-content">
+              <p>${escapeHTML(message)}</p>
+              <div class="message-timestamp">${timestamp}</div>
+            </div>
+          </div>
+        `;
+        chatMessages.insertAdjacentHTML('beforeend', userMessageHTML);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+      
+      // Clear input
+      if (chatInput) {
+        chatInput.value = '';
+      }
+      
+      // Show typing indicator
+      const typingHTML = `
+        <div class="chat-message bot-message" id="typingIndicator">
+          <div class="message-avatar">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="message-content">
+            <div class="typing-indicator">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      `;
+      if (chatMessages) {
+        chatMessages.insertAdjacentHTML('beforeend', typingHTML);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+      
+      // Send to API
+      fetch('http://localhost:5000/api/conversation', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: message,
+          symptom_context: {
+            symptoms: [],
+            urgency: 'non-urgent',
+            top_condition: currentDiagnosis.condition,
+            patient_context: currentDiagnosis.patient_context
+          },
+          chat_history: chatHistory  // Now passing actual chat history
+        })
+      })
+      .then(response => {
+        console.log('API response status:', response.status);
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('API response data:', data);
+        
+        // Remove typing indicator
+        const typingIndicator = document.getElementById('typingIndicator');
+        if (typingIndicator) {
+          typingIndicator.remove();
+        }
+        
+        // Add AI response
+        if (chatMessages && data.ai_response) {
+          console.log('Formatting AI response:', data.ai_response);
+          const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          const formattedResponse = formatAIResponse(data.ai_response);
+          console.log('Formatted response:', formattedResponse);
+          const botMessageHTML = `
+            <div class="chat-message bot-message">
+              <div class="message-avatar">
+                <i class="fas fa-robot"></i>
+              </div>
+              <div class="message-content">
+                ${formattedResponse}
+                <div class="message-timestamp">${timestamp}</div>
+              </div>
+            </div>
+          `;
+          chatMessages.insertAdjacentHTML('beforeend', botMessageHTML);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+          console.log('✅ AI response added to chat');
+          
+          // Update chat history with user message and AI response
+          chatHistory.push({
+            role: "user",
+            content: message
+          });
+          chatHistory.push({
+            role: "assistant",
+            content: data.ai_response
+          });
+          
+          // Keep only last 10 messages (5 exchanges) to prevent context overflow
+          if (chatHistory.length > 10) {
+            chatHistory = chatHistory.slice(-10);
+          }
+          
+          console.log('Updated chat history:', chatHistory.length, 'messages');
+        } else {
+          console.warn('No AI response in data or chatMessages not found');
+        }
+        
+        // Update suggestions if provided
+        if (data.follow_up_suggestions && data.follow_up_suggestions.length > 0) {
+          const suggestionsContainer = document.getElementById('chatSuggestions');
+          if (suggestionsContainer) {
+            suggestionsContainer.innerHTML = data.follow_up_suggestions.map(s => 
+              `<button class="suggestion-btn" onclick="document.getElementById('chatInput').value='${escapeHTML(s)}'; sendChatMessageDirect();">${escapeHTML(s)}</button>`
+            ).join('');
+          }
+        }
+      })
+      .catch(error => {
+        console.error('Chat error:', error);
+        
+        // Remove typing indicator
+        const typingIndicator = document.getElementById('typingIndicator');
+        if (typingIndicator) {
+          typingIndicator.remove();
+        }
+        
+        // Show error message
+        if (chatMessages) {
+          const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          const errorMessageHTML = `
+            <div class="chat-message bot-message">
+              <div class="message-avatar">
+                <i class="fas fa-robot"></i>
+              </div>
+              <div class="message-content">
+                <p style="color: #ef4444;">I apologize, but I'm having trouble connecting right now. Please make sure the backend server is running on port 5000.</p>
+                <div class="message-timestamp">${timestamp}</div>
+              </div>
+            </div>
+          `;
+          chatMessages.insertAdjacentHTML('beforeend', errorMessageHTML);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+      });
+    }
+    
+    // Voice input function
+    function startVoiceInput() {
+      if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+        alert('Voice input is not supported in your browser. Please use Chrome or Edge.');
+        return;
+      }
+      
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = 'en-US';
+      
+      const voiceBtn = document.getElementById('voiceChatBtn');
+      if (voiceBtn) {
+        voiceBtn.style.background = '#ef4444';
+        voiceBtn.innerHTML = '<i class="fas fa-microphone-slash"></i>';
+      }
+      
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        const chatInput = document.getElementById('chatInput');
+        if (chatInput) {
+          chatInput.value = transcript;
+          console.log('Voice transcription:', transcript);
+        }
+        
+        // Reset button
+        if (voiceBtn) {
+          voiceBtn.style.background = '';
+          voiceBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+        }
+        
+        // Automatically send message
+        setTimeout(() => sendChatMessageDirect(), 500);
+      };
+      
+      recognition.onerror = function(event) {
+        console.error('Speech recognition error:', event.error);
+        alert('Voice input error: ' + event.error);
+        
+        // Reset button
+        if (voiceBtn) {
+          voiceBtn.style.background = '';
+          voiceBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+        }
+      };
+      
+      recognition.onend = function() {
+        // Reset button
+        if (voiceBtn) {
+          voiceBtn.style.background = '';
+          voiceBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+        }
+      };
+      
+      try {
+        recognition.start();
+        console.log('Voice recognition started');
+      } catch (error) {
+        console.error('Error starting voice recognition:', error);
+        alert('Could not start voice input: ' + error.message);
+      }
+    }
+    
+    // Utility function to escape HTML
+    function escapeHTML(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+    
+    // Format AI response with proper formatting
+    function formatAIResponse(text) {
+      try {
+        if (!text) return '<p>No response received.</p>';
+        
+        let formatted = text;
+        
+        // Remove excessive markdown formatting that doesn't render well
+        // Remove markdown tables (they don't display well in chat)
+        formatted = formatted.replace(/\|[^\n]+\|/g, '');
+        formatted = formatted.replace(/\|[-:]+\|/g, '');
+        
+        // Convert markdown headers to clean HTML
+        formatted = formatted.replace(/^### (.+)$/gm, '<h4 class="diet-section-header">$1</h4>');
+        formatted = formatted.replace(/^## (.+)$/gm, '<h3 class="diet-main-header">$1</h3>');
+        formatted = formatted.replace(/^# (.+)$/gm, '<h3 class="diet-main-header">$1</h3>');
+        
+        // Convert **bold** text
+        formatted = formatted.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+        
+        // Convert *italic* text
+        formatted = formatted.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+        
+        // Split into lines for processing
+        const lines = formatted.split('\n');
+        let inList = false;
+        let listType = 'none';
+        let result = [];
+        let currentSection = '';
+        
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i].trim();
+          
+          // Skip empty lines within lists
+          if (!line && inList) continue;
+          
+          // Check if it's a header (already converted)
+          if (line.startsWith('<h3') || line.startsWith('<h4')) {
+            // Close any open list
+            if (inList) {
+              result.push(listType === 'ol' ? '</ol>' : '</ul>');
+              inList = false;
+            }
+            result.push(line);
+            continue;
+          }
+          
+          // Check for numbered list items (e.g., "1. ", "2. ")
+          const numberedMatch = line.match(/^(\d+)\.\s+(.+)/);
+          
+          if (numberedMatch) {
+            if (!inList || listType !== 'ol') {
+              if (inList) result.push(listType === 'ol' ? '</ol>' : '</ul>');
+              result.push('<ol class="diet-list">');
+              inList = true;
+              listType = 'ol';
+            }
+            result.push(`<li>${numberedMatch[2]}</li>`);
+          } else if (line.startsWith('- ') || line.startsWith('• ') || line.startsWith('✅ ') || line.startsWith('❌ ')) {
+            // Bullet points with emoji support
+            if (!inList || listType !== 'ul') {
+              if (inList) result.push(listType === 'ol' ? '</ol>' : '</ul>');
+              result.push('<ul class="diet-list">');
+              inList = true;
+              listType = 'ul';
+            }
+            const content = line.replace(/^[-•✅❌]\s+/, '');
+            result.push(`<li>${content}</li>`);
+          } else {
+            // Close list if we were in one
+            if (inList) {
+              result.push(listType === 'ol' ? '</ol>' : '</ul>');
+              inList = false;
+              listType = 'none';
+            }
+            
+            // Regular paragraph (skip very short lines that look like separators)
+            if (line && line.length > 3 && !line.match(/^[-=*_]{3,}$/)) {
+              // Add special styling for disclaimer/warning text
+              if (line.includes('⚠️') || line.toLowerCase().includes('disclaimer') || line.toLowerCase().includes('important')) {
+                result.push(`<div class="diet-disclaimer">${line}</div>`);
+              } else if (line.includes('*Why?*') || line.includes('*Tip:*') || line.includes('*Note:*')) {
+                result.push(`<p class="diet-note">${line}</p>`);
+              } else {
+                result.push(`<p class="diet-paragraph">${line}</p>`);
+              }
+            }
+          }
+        }
+        
+        // Close list if still open
+        if (inList) {
+          result.push(listType === 'ol' ? '</ol>' : '</ul>');
+        }
+        
+        // Wrap everything in a clean container
+        return `<div class="diet-response-container">${result.join('')}</div>`;
+      } catch (error) {
+        console.error('Error formatting AI response:', error);
+        // Fallback to simple paragraph
+        return `<div class="diet-response-container"><p>${text}</p></div>`;
+      }
+    }
+    
+    // Main chat send function
+    function sendChatMessageMain() {
+      const chatInput = document.getElementById('chatInputMain');
+      const chatMessages = document.getElementById('chatMessagesMain');
+      const message = chatInput ? chatInput.value.trim() : '';
+      
+      if (!message) return;
+      
+      // Add user message
+      if (chatMessages) {
+        const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const userMessageHTML = `
+          <div class="chat-message user-message">
+            <div class="message-avatar"><i class="fas fa-user"></i></div>
+            <div class="message-content">
+              <p>${escapeHTML(message)}</p>
+              <div class="message-timestamp">${timestamp}</div>
+            </div>
+          </div>
+        `;
+        chatMessages.insertAdjacentHTML('beforeend', userMessageHTML);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+      
+      chatInput.value = '';
+      
+      // Add typing indicator
+      const typingHTML = `
+        <div class="chat-message bot-message" id="typingIndicatorMain">
+          <div class="message-avatar"><i class="fas fa-robot"></i></div>
+          <div class="message-content">
+            <div class="typing-indicator"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      `;
+      if (chatMessages) {
+        chatMessages.insertAdjacentHTML('beforeend', typingHTML);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+      
+      // Send to API
+      fetch('http://localhost:5000/api/conversation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          message: message, 
+          symptom_context: { 
+            symptoms: [], 
+            urgency: 'non-urgent',
+            top_condition: currentDiagnosis.condition,
+            patient_context: currentDiagnosis.patient_context
+          }, 
+          chat_history: chatHistory  // Use shared chat history
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('typingIndicatorMain')?.remove();
+        
+        if (chatMessages && data.ai_response) {
+          const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          const formattedResponse = formatAIResponse(data.ai_response);
+          const botMessageHTML = `
+            <div class="chat-message bot-message">
+              <div class="message-avatar"><i class="fas fa-robot"></i></div>
+              <div class="message-content">
+                ${formattedResponse}
+                <div class="message-timestamp">${timestamp}</div>
+              </div>
+            </div>
+          `;
+          chatMessages.insertAdjacentHTML('beforeend', botMessageHTML);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+          
+          // Update chat history
+          chatHistory.push({ role: "user", content: message });
+          chatHistory.push({ role: "assistant", content: data.ai_response });
+          
+          // Keep only last 10 messages
+          if (chatHistory.length > 10) {
+            chatHistory = chatHistory.slice(-10);
+          }
+        }
+      })
+      .catch(error => {
+        console.error('Chat error:', error);
+        document.getElementById('typingIndicatorMain')?.remove();
+      });
+    }
+    
+    // Main voice input function
+    function startVoiceInputMain() {
+      if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+        alert('Voice input not supported in your browser');
+        return;
+      }
+      
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = 'en-US';
+      
+      const voiceBtn = document.getElementById('voiceChatBtnMain');
+      if (voiceBtn) {
+        voiceBtn.style.background = '#ef4444';
+        voiceBtn.innerHTML = '<i class="fas fa-microphone-slash"></i>';
+      }
+      
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        const chatInput = document.getElementById('chatInputMain');
+        if (chatInput) chatInput.value = transcript;
+        
+        if (voiceBtn) {
+          voiceBtn.style.background = '';
+          voiceBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+        }
+        
+        setTimeout(() => sendChatMessageMain(), 500);
+      };
+      
+      recognition.onerror = function(event) {
+        console.error('Speech error:', event.error);
+        if (voiceBtn) {
+          voiceBtn.style.background = '';
+          voiceBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+        }
+      };
+      
+      recognition.onend = function() {
+        if (voiceBtn) {
+          voiceBtn.style.background = '';
+          voiceBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+        }
+      };
+      
+      try {
+        recognition.start();
+      } catch (error) {
+        console.error('Voice start error:', error);
+      }
+    }
+    
+    // ============================================
+    // DEDICATED HOSPITAL FINDER SECTION
+    // ============================================
+    const findHospitalsBtn = document.getElementById('findHospitalsBtn');
+    const finderClearBtn = document.getElementById('finderClearBtn');
+    const backToAnalysisBtn = document.getElementById('backToAnalysisBtn');
+    const finderResultsContainer = document.getElementById('finderResultsContainer');
+    const finderResultsContent = document.getElementById('finderResultsContent');
+    const finderResultsTitle = document.getElementById('finderResultsTitle');
+    const hospitalFinderSection = document.getElementById('hospital-finder');
+    const resultsSection = document.getElementById('results');
+
+    let finderUserLat = null;
+    let finderUserLon = null;
+
+    // Back to Medical Analysis button
+    if (backToAnalysisBtn) {
+      backToAnalysisBtn.addEventListener('click', () => {
+        // Scroll back to the medical analysis results section
+        if (resultsSection) {
+          resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }
+
+    // Find Hospitals button click - Get location and search
+    if (findHospitalsBtn) {
+      findHospitalsBtn.addEventListener('click', async () => {
+        // Request location permission and get coordinates
+        if ("geolocation" in navigator) {
+          findHospitalsBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Getting Location...</span>';
+          findHospitalsBtn.disabled = true;
+
+          navigator.geolocation.getCurrentPosition(
+            async (position) => {
+              finderUserLat = position.coords.latitude;
+              finderUserLon = position.coords.longitude;
+              
+              findHospitalsBtn.innerHTML = '<i class="fas fa-search"></i> <span>Searching...</span>';
+
+              // Search for hospitals
+              try {
+                const response = await fetch('http://localhost:5000/api/hospitals/nearby', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    latitude: finderUserLat,
+                    longitude: finderUserLon,
+                    max_distance: 50,
+                    limit: 20
+                  })
+                });
+
+                if (!response.ok) {
+                  throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                  displayFinderResults(data, finderUserLat, finderUserLon);
+                  // Show the hospital finder section and scroll to it
+                  hospitalFinderSection.style.display = 'block';
+                  hospitalFinderSection.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  alert(data.message || 'Error finding hospitals');
+                }
+              } catch (error) {
+                console.error('Error:', error);
+                alert('Error connecting to server. Please make sure the backend is running.');
+              } finally {
+                findHospitalsBtn.innerHTML = '<i class="fas fa-hospital"></i> <span>Find Hospitals</span>';
+                findHospitalsBtn.disabled = false;
+              }
+            },
+            (error) => {
+              console.error('Geolocation error:', error);
+              alert('Unable to get your location. Please enable location permissions in your browser.');
+              findHospitalsBtn.innerHTML = '<i class="fas fa-hospital"></i> <span>Find Hospitals</span>';
+              findHospitalsBtn.disabled = false;
+            }
+          );
+        } else {
+          alert('Geolocation is not supported by your browser.');
+        }
+      });
+    }
+
+    // Clear results button - now just hides the section
+    if (finderClearBtn) {
+      finderClearBtn.addEventListener('click', () => {
+        finderResultsContainer.style.display = 'none';
+        hospitalFinderSection.style.display = 'none';
+        finderUserLat = null;
+        finderUserLon = null;
+      });
+    }
+
+    // Display results function for dedicated section
+    function displayFinderResults(data, userLat, userLon) {
+      const hospitals = data.hospitals || [];
+      const emergency = data.search_params?.urgency === 'emergency';
+
+      console.log('displayFinderResults - hospitals:', hospitals);
+
+      if (!hospitals || hospitals.length === 0) {
+        finderResultsContent.innerHTML = `
+          <div style="text-align: center; padding: 3rem; color: var(--text-secondary);">
+            <i class="fas fa-hospital" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+            <h3>No Hospitals Found</h3>
+            <p>We couldn't find any hospitals within 50km of your location.</p>
+            <p>Try a different location or check your coordinates.</p>
+          </div>
+        `;
+        finderResultsContainer.style.display = 'block';
+        finderResultsContainer.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+
+      // Update title
+      finderResultsTitle.innerHTML = `🏥 Found ${hospitals.length} Hospital${hospitals.length !== 1 ? 's' : ''} Near You`;
+      if (emergency) {
+        finderResultsTitle.innerHTML += ' <span style="background: #ef4444; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8em; margin-left: 8px;">⚡ EMERGENCY</span>';
+      }
+
+      // Generate HTML
+      let html = '';
+      hospitals.forEach((hospital, index) => {
+        const distanceKm = (hospital.distance || hospital.distance_km || 0).toFixed(1);
+        const rating = hospital.rating || 'N/A';
+        const mapsLink = `https://www.google.com/maps/dir/?api=1&destination=${hospital.latitude},${hospital.longitude}`;
+
+        html += `
+          <div class="hospital-card" style="border-radius: 12px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 4px solid ${emergency ? '#ef4444' : '#3b82f6'};">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+              <div style="flex: 1;">
+                <h3 style="margin: 0 0 8px 0; font-size: 1.2em; display: flex; align-items: center; gap: 8px;">
+                  <span style="background: ${emergency ? '#fee2e2' : '#dbeafe'}; color: ${emergency ? '#991b1b' : '#1e40af'}; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8em; font-weight: bold;">
+                    ${index + 1}
+                  </span>
+                  ${hospital.name}
+                  ${emergency ? '<span style="background: #ef4444; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7em; margin-left: 8px;">⚡ EMERGENCY</span>' : ''}
+                </h3>
+                <div style="font-size: 0.9em;">
+                  <p style="margin: 4px 0; display: flex; align-items: center; gap: 6px;">
+                    <i class="fas fa-map-marker-alt" style="width: 16px; color: #3b82f6;"></i>
+                    <span style="color: inherit;">${hospital.address}, ${hospital.city}</span>
+                  </p>
+                </div>
+              </div>
+              <div style="text-align: right; min-width: 80px;">
+                <div class="distance-badge" style="padding: 6px 12px; border-radius: 20px; font-weight: 600; font-size: 0.9em; margin-bottom: 6px;">
+                  <i class="fas fa-route"></i> ${distanceKm} km
+                </div>
+                ${rating !== 'N/A' ? `
+                  <div style="font-size: 0.9em;">
+                    <i class="fas fa-star" style="color: #fbbf24;"></i> <span style="color: #fbbf24;">${rating}/5</span>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 15px 0; padding: 12px; background: rgba(148, 163, 184, 0.1); border-radius: 8px;">
+              ${hospital.phone ? `
+                <div class="phone-number" style="display: flex; align-items: center; gap: 8px;">
+                  <i class="fas fa-phone" style="color: #10b981;"></i>
+                  <a href="tel:${hospital.phone}" style="text-decoration: none; font-weight: 500;">
+                    ${hospital.phone}
+                  </a>
+                </div>
+              ` : ''}
+              
+              ${hospital.departments && hospital.departments.length > 0 ? `
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <i class="fas fa-hospital-user" style="color: #8b5cf6;"></i>
+                  <span>${hospital.departments.length} Departments</span>
+                </div>
+              ` : ''}
+            </div>
+            
+            ${hospital.departments && hospital.departments.length > 0 ? `
+              <div style="margin: 12px 0;">
+                <div style="font-weight: 600; margin-bottom: 6px; font-size: 0.9em;">
+                  <i class="fas fa-clinic-medical"></i> Available Departments:
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                  ${hospital.departments.slice(0, 6).map(dept => `
+                    <span style="background: #ede9fe; color: #6d28d9; padding: 4px 10px; border-radius: 12px; font-size: 0.85em;">
+                      ${dept}
+                    </span>
+                  `).join('')}
+                  ${hospital.departments.length > 6 ? `
+                    <span style="opacity: 0.6; font-size: 0.85em; padding: 4px 10px;">
+                      +${hospital.departments.length - 6} more
+                    </span>
+                  ` : ''}
+                </div>
+              </div>
+            ` : ''}
+            
+            <div style="display: flex; gap: 10px; margin-top: 15px;">
+              <a href="${mapsLink}" target="_blank" class="btn btn-primary" style="flex: 1; text-align: center; text-decoration: none; padding: 10px 16px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #3b82f6; color: white; border: none; cursor: pointer; font-weight: 500; transition: all 0.3s;">
+                <i class="fas fa-directions"></i>
+                <span>Get Directions</span>
+              </a>
+              ${hospital.phone ? `
+                <a href="tel:${hospital.phone}" class="btn btn-success" style="flex: 1; text-align: center; text-decoration: none; padding: 10px 16px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #10b981; color: white; border: none; cursor: pointer; font-weight: 500; transition: all 0.3s;">
+                  <i class="fas fa-phone"></i>
+                  <span>Call Now</span>
+                </a>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      });
+
+      // Add info box
+      html += `
+        <div class="info-box" style="border-left: 4px solid #f59e0b; padding: 15px; margin-top: 20px; border-radius: 8px; background: rgba(245, 158, 11, 0.15);">
+          <p style="margin: 0; font-weight: 600;">
+            <i class="fas fa-info-circle"></i> Important Information:
+          </p>
+          <ul style="margin: 10px 0 0 0; padding-left: 20px;">
+            <li>Always call ahead to confirm availability</li>
+            <li>In case of emergency, dial your local emergency number immediately</li>
+            <li>Distances are approximate and based on straight-line calculations</li>
+            <li>Actual travel time may vary based on traffic conditions</li>
+          </ul>
+        </div>
+      `;
+
+      finderResultsContent.innerHTML = html;
+      finderResultsContainer.style.display = 'block';
+      finderResultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
+</body>
+</html>

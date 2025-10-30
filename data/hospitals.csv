@@ -1,0 +1,11 @@
+hospital_id,hospital_name,location_lat,location_lon,city,departments_available,contact_number
+H001,City General Hospital,17.385044,78.486671,Hyderabad,"General Medicine,Cardiology,Neurology,Pulmonology,Gastroenterology,Endocrinology,Urology,Orthopedics",+91-40-12345678
+H002,Sunrise Multi-Specialty Hospital,12.971599,77.594566,Bengaluru,"General Medicine,Cardiology,Neurology,Gastroenterology,Dermatology,Orthopedics,Gynecology",+91-80-23456789
+H003,Apollo Health Center,28.613939,77.209021,New Delhi,"General Medicine,Cardiology,Neurology,Pulmonology,Gastroenterology,Endocrinology,Urology,Orthopedics,Dermatology,Pediatrics,Gynecology,Psychiatry",+91-11-34567890
+H004,Lakeside Children’s Hospital,19.076090,72.877426,Mumbai,"Pediatrics,General Medicine,Dermatology",+91-22-45678901
+H005,Metro Heart Institute,28.459497,77.026638,Gurugram,"Cardiology,General Medicine,Emergency",+91-124-56789012
+H006,Global Women’s Care Hospital,13.082680,80.270718,Chennai,"Gynecology,Obstetrics,General Medicine",+91-44-67890123
+H007,Fortis NeuroCare Center,22.572646,88.363895,Kolkata,"Neurology,Psychiatry,General Medicine",+91-33-78901234
+H008,Hope Cancer & Endocrine Institute,23.022505,72.571362,Ahmedabad,"Endocrinology,Oncology,General Medicine",+91-79-89012345
+H009,LifeCare Urology & Kidney Center,18.520430,73.856743,Pune,"Urology,Nephrology,General Medicine",+91-20-90123456
+H010,OrthoPlus Bone & Joint Hospital,26.912434,75.787270,Jaipur,"Orthopedics,Physiotherapy,General Medicine",+91-141-12340987

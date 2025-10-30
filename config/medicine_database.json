@@ -1,0 +1,234 @@
+{
+  "medicine_database": {
+    "analgesics": {
+      "paracetamol": {
+        "generic_name": "Acetaminophen/Paracetamol",
+        "brand_names": ["Tylenol", "Panadol", "Crocin", "Dolo"],
+        "type": "Pain reliever/Fever reducer",
+        "dosage": {
+          "adults": "500-1000mg every 4-6 hours, max 4000mg/day",
+          "children": "10-15mg/kg every 4-6 hours"
+        },
+        "conditions": ["headache", "fever", "body_aches", "mild_pain"],
+        "side_effects": ["Rare: Liver damage with overdose"],
+        "contraindications": ["Severe liver disease", "Alcohol dependency"],
+        "pregnancy_safe": true,
+        "otc": true
+      },
+      "ibuprofen": {
+        "generic_name": "Ibuprofen",
+        "brand_names": ["Advil", "Brufen", "Combiflam"],
+        "type": "NSAID - Anti-inflammatory",
+        "dosage": {
+          "adults": "200-400mg every 4-6 hours, max 1200mg/day",
+          "children": "5-10mg/kg every 6-8 hours"
+        },
+        "conditions": ["headache", "fever", "inflammation", "muscle_pain", "arthritis"],
+        "side_effects": ["Stomach upset", "Heartburn", "Dizziness"],
+        "contraindications": ["Stomach ulcers", "Heart disease", "Kidney problems"],
+        "pregnancy_safe": false,
+        "otc": true
+      },
+      "aspirin": {
+        "generic_name": "Acetylsalicylic acid",
+        "brand_names": ["Aspirin", "Disprin", "Ecosprin"],
+        "type": "NSAID - Anti-platelet",
+        "dosage": {
+          "adults": "325-650mg every 4 hours for pain, 75-100mg daily for heart protection",
+          "children": "Not recommended under 16 due to Reye's syndrome risk"
+        },
+        "conditions": ["headache", "heart_attack_prevention", "stroke_prevention"],
+        "side_effects": ["Stomach bleeding", "Tinnitus", "Allergic reactions"],
+        "contraindications": ["Children under 16", "Bleeding disorders", "Stomach ulcers"],
+        "pregnancy_safe": false,
+        "otc": true
+      }
+    },
+    "cold_flu": {
+      "cetirizine": {
+        "generic_name": "Cetirizine",
+        "brand_names": ["Zyrtec", "Alerid", "Cetriz"],
+        "type": "Antihistamine",
+        "dosage": {
+          "adults": "10mg once daily",
+          "children": "2.5-5mg once daily (age dependent)"
+        },
+        "conditions": ["allergies", "runny_nose", "sneezing", "itching"],
+        "side_effects": ["Drowsiness", "Dry mouth", "Fatigue"],
+        "contraindications": ["Severe kidney disease"],
+        "pregnancy_safe": true,
+        "otc": true
+      },
+      "dextromethorphan": {
+        "generic_name": "Dextromethorphan",
+        "brand_names": ["Robitussin DM", "Benadryl DR"],
+        "type": "Cough suppressant",
+        "dosage": {
+          "adults": "15-30mg every 4 hours, max 120mg/day",
+          "children": "Age-based dosing"
+        },
+        "conditions": ["dry_cough", "persistent_cough"],
+        "side_effects": ["Drowsiness", "Dizziness", "Nausea"],
+        "contraindications": ["MAO inhibitor use", "Productive cough"],
+        "pregnancy_safe": true,
+        "otc": true
+      }
+    },
+    "digestive": {
+      "omeprazole": {
+        "generic_name": "Omeprazole",
+        "brand_names": ["Prilosec", "Losec", "Omez"],
+        "type": "Proton pump inhibitor",
+        "dosage": {
+          "adults": "20-40mg once daily before meals",
+          "children": "Weight-based dosing"
+        },
+        "conditions": ["acid_reflux", "heartburn", "stomach_ulcers", "gastritis"],
+        "side_effects": ["Headache", "Nausea", "Diarrhea"],
+        "contraindications": ["Hypersensitivity to PPIs"],
+        "pregnancy_safe": true,
+        "otc": true
+      },
+      "loperamide": {
+        "generic_name": "Loperamide",
+        "brand_names": ["Imodium", "Lopamide"],
+        "type": "Anti-diarrheal",
+        "dosage": {
+          "adults": "2mg initially, then 1mg after each loose stool, max 8mg/day",
+          "children": "Age and weight-based dosing"
+        },
+        "conditions": ["diarrhea", "loose_stools"],
+        "side_effects": ["Constipation", "Drowsiness", "Dry mouth"],
+        "contraindications": ["Bloody diarrhea", "High fever", "Bacterial infections"],
+        "pregnancy_safe": true,
+        "otc": true
+      },
+      "oral_rehydration_salts": {
+        "generic_name": "Oral Rehydration Solution",
+        "brand_names": ["ORS", "Electral", "Enerzal"],
+        "type": "Electrolyte replacement",
+        "dosage": {
+          "adults": "1 sachet in 200ml water, repeat as needed",
+          "children": "Age-based volumes"
+        },
+        "conditions": ["dehydration", "diarrhea", "vomiting", "excessive_sweating"],
+        "side_effects": ["Rare: Electrolyte imbalance if overused"],
+        "contraindications": ["Kidney failure", "Heart failure"],
+        "pregnancy_safe": true,
+        "otc": true
+      }
+    },
+    "respiratory": {
+      "salbutamol": {
+        "generic_name": "Salbutamol/Albuterol",
+        "brand_names": ["Ventolin", "Asthalin", "ProAir"],
+        "type": "Bronchodilator",
+        "dosage": {
+          "adults": "2 puffs every 4-6 hours as needed",
+          "children": "1-2 puffs as prescribed"
+        },
+        "conditions": ["asthma", "shortness_of_breath", "wheezing"],
+        "side_effects": ["Tremor", "Rapid heartbeat", "Nervousness"],
+        "contraindications": ["Hypersensitivity", "Severe heart conditions"],
+        "pregnancy_safe": true,
+        "otc": false
+      },
+      "guaifenesin": {
+        "generic_name": "Guaifenesin",
+        "brand_names": ["Mucinex", "Robitussin"],
+        "type": "Expectorant",
+        "dosage": {
+          "adults": "200-400mg every 4 hours, max 2400mg/day",
+          "children": "Age-based dosing"
+        },
+        "conditions": ["productive_cough", "chest_congestion", "thick_mucus"],
+        "side_effects": ["Nausea", "Drowsiness", "Dizziness"],
+        "contraindications": ["Hypersensitivity"],
+        "pregnancy_safe": true,
+        "otc": true
+      }
+    },
+    "topical": {
+      "hydrocortisone": {
+        "generic_name": "Hydrocortisone",
+        "brand_names": ["Cortaid", "Dermacort"],
+        "type": "Topical corticosteroid",
+        "dosage": {
+          "adults": "Apply thin layer 2-3 times daily",
+          "children": "Use sparingly, limited duration"
+        },
+        "conditions": ["skin_rash", "eczema", "itching", "dermatitis"],
+        "side_effects": ["Skin thinning with prolonged use", "Local irritation"],
+        "contraindications": ["Fungal infections", "Viral skin infections"],
+        "pregnancy_safe": true,
+        "otc": true
+      },
+      "calamine_lotion": {
+        "generic_name": "Calamine",
+        "brand_names": ["Calamine", "Caladryl"],
+        "type": "Topical antipruritic",
+        "dosage": {
+          "adults": "Apply to affected area 3-4 times daily",
+          "children": "Same as adults"
+        },
+        "conditions": ["itching", "insect_bites", "minor_skin_irritation", "rash"],
+        "side_effects": ["Skin dryness", "Rare allergic reactions"],
+        "contraindications": ["Open wounds", "Deep cuts"],
+        "pregnancy_safe": true,
+        "otc": true
+      }
+    },
+    "emergency": {
+      "epinephrine": {
+        "generic_name": "Epinephrine",
+        "brand_names": ["EpiPen", "Adrenaclick"],
+        "type": "Emergency allergy treatment",
+        "dosage": {
+          "adults": "0.3mg auto-injector",
+          "children": "0.15mg auto-injector"
+        },
+        "conditions": ["severe_allergic_reaction", "anaphylaxis"],
+        "side_effects": ["Rapid heartbeat", "Anxiety", "Tremor"],
+        "contraindications": ["Use despite contraindications in emergency"],
+        "pregnancy_safe": true,
+        "otc": false
+      }
+    }
+  },
+  "condition_medicine_mapping": {
+    "Common Cold": ["paracetamol", "cetirizine", "dextromethorphan"],
+    "Seasonal Flu": ["paracetamol", "ibuprofen", "oral_rehydration_salts"],
+    "Headache": ["paracetamol", "ibuprofen"],
+    "Migraine": ["paracetamol", "ibuprofen"],
+    "Fever": ["paracetamol", "ibuprofen"],
+    "Gastritis": ["omeprazole", "paracetamol"],
+    "Acid Reflux": ["omeprazole"],
+    "Diarrhea": ["loperamide", "oral_rehydration_salts"],
+    "Asthma Attack": ["salbutamol"],
+    "Allergic Reaction": ["cetirizine", "hydrocortisone"],
+    "Skin Rash": ["hydrocortisone", "calamine_lotion"],
+    "Cough": ["dextromethorphan", "guaifenesin"],
+    "Body Aches": ["paracetamol", "ibuprofen"],
+    "Muscle Pain": ["ibuprofen", "paracetamol"],
+    "Chest Congestion": ["guaifenesin"],
+    "Insect Bite": ["calamine_lotion", "cetirizine"]
+  },
+  "age_restrictions": {
+    "aspirin": {"min_age": 16, "reason": "Reye's syndrome risk"},
+    "ibuprofen": {"min_age": 6, "reason": "Safety in younger children"},
+    "dextromethorphan": {"min_age": 4, "reason": "Effectiveness and safety"}
+  },
+  "drug_interactions": {
+    "aspirin": ["warfarin", "methotrexate", "alcohol"],
+    "ibuprofen": ["warfarin", "ACE inhibitors", "lithium"],
+    "omeprazole": ["clopidogrel", "digoxin", "iron supplements"]
+  },
+  "medical_disclaimers": {
+    "general": "These are general medication suggestions based on common treatments. Always consult a healthcare professional before taking any medication.",
+    "emergency": "For emergency conditions, seek immediate medical attention. Do not rely solely on over-the-counter medications.",
+    "prescription": "Some medications require a prescription. Consult with a doctor or pharmacist.",
+    "allergies": "Check for drug allergies and interactions before taking any medication.",
+    "pregnancy": "Pregnant or breastfeeding women should consult healthcare providers before taking medications.",
+    "children": "Pediatric dosing requires careful calculation. Consult pediatrician for children's medications."
+  }
+}
