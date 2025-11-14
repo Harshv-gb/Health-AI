@@ -6,20 +6,26 @@ import csv
 import math
 import os
 
-# Import professional disease predictor
+# Import SQL-based disease predictor (with fallback to original)
 try:
-    from backend.app.disease_predictor import predict_diseases_professional
+    from disease_predictor_sql import predict_diseases
+    predict_diseases_professional = predict_diseases
     DISEASE_PREDICTOR_ENABLED = True
-    print("✅ Professional disease predictor loaded successfully")
+    print("✅ SQL-based disease predictor loaded successfully")
 except ImportError as e:
-    print(f"⚠️ Disease predictor not available: {e}")
-    DISEASE_PREDICTOR_ENABLED = False
+    try:
+        from disease_predictor import predict_diseases_professional
+        DISEASE_PREDICTOR_ENABLED = True
+        print("✅ Original disease predictor loaded (SQL not available)")
+    except ImportError as e2:
+        print(f"⚠️ Disease predictor not available: {e2}")
+        DISEASE_PREDICTOR_ENABLED = False
 
 # Import AI components
 try:
-    from backend.app.parser import parse_symptoms_with_ai
-    from backend.app.triage_engine import perform_ai_triage
-    from backend.app.mistral_client import get_ai_medical_advice, get_health_education, get_diet_recommendations
+    from parser import parse_symptoms_with_ai
+    from triage_engine import perform_ai_triage
+    from mistral_client import get_ai_medical_advice, get_health_education, get_diet_recommendations
     AI_ENABLED = True
     print("✅ AI components loaded successfully")
 except ImportError as e:
@@ -72,8 +78,8 @@ except ImportError as e:
 
 # Import voice and report processing modules
 try:
-    from backend.app.voice_processor import process_voice_input, generate_voice_response
-    from backend.app.report_scanner import scan_medical_report
+    from voice_processor import process_voice_input, generate_voice_response
+    from report_scanner import scan_medical_report
     VOICE_ENABLED = True
     REPORT_SCAN_ENABLED = True
     print("✅ Voice and report scanning loaded successfully")
@@ -109,22 +115,30 @@ except ImportError as e:
 
 # Import medicine recommendation system
 try:
-    from backend.app.medicine_recommender import get_medicine_recommendations_for_condition, get_medicine_details, search_medicines_by_symptoms
+    from medicine_recommender import get_medicine_recommendations_for_condition, get_medicine_details, search_medicines_by_symptoms
     MEDICINE_ENABLED = True
     print("✅ Medicine recommendation system loaded")
 except ImportError as e:
     print(f"Medicine recommendation not available: {e}")
     MEDICINE_ENABLED = False
 
-# Import Hospital Finder
+# Import SQL-based Hospital Finder (with fallback to original)
 try:
-    from backend.app.hospital_finder import HospitalFinder
+    from hospital_finder_sql import find_nearby_hospitals as find_hospitals_sql
     HOSPITAL_FINDER_ENABLED = True
-    print("✅ Hospital finder loaded successfully")
+    USE_SQL_HOSPITALS = True
+    print("✅ SQL-based hospital finder loaded successfully")
 except ImportError as e:
-    print(f"Hospital finder not available: {e}")
-    HOSPITAL_FINDER_ENABLED = False
-    HospitalFinder = None
+    try:
+        from hospital_finder import HospitalFinder
+        HOSPITAL_FINDER_ENABLED = True
+        USE_SQL_HOSPITALS = False
+        print("✅ Original hospital finder loaded (SQL not available)")
+    except ImportError as e2:
+        print(f"Hospital finder not available: {e2}")
+        HOSPITAL_FINDER_ENABLED = False
+        USE_SQL_HOSPITALS = False
+        HospitalFinder = None
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -954,28 +968,38 @@ def find_nearby_hospitals_live():
             }), 400
         
         # Check if hospital finder is available
-        if not HOSPITAL_FINDER_ENABLED or hospital_finder is None:
+        if not HOSPITAL_FINDER_ENABLED:
             return jsonify({
                 "status": "error",
                 "message": "Hospital finder service unavailable"
             }), 503
         
-        # Find hospitals based on urgency
-        if urgency == 'emergency':
-            nearby_hospitals = hospital_finder.get_emergency_hospitals(
-                user_lat=user_lat,
-                user_lon=user_lon,
-                max_distance=max_distance,
+        # Find hospitals using SQL or original method
+        if USE_SQL_HOSPITALS:
+            nearby_hospitals = find_hospitals_sql(
+                latitude=user_lat,
+                longitude=user_lon,
+                department=department,
+                radius_km=max_distance,
                 limit=limit
             )
         else:
-            nearby_hospitals = hospital_finder.find_nearby_hospitals(
-                user_lat=user_lat,
-                user_lon=user_lon,
-                department=department,
-                max_distance=max_distance,
-                limit=limit
-            )
+            # Original method
+            if urgency == 'emergency':
+                nearby_hospitals = hospital_finder.get_emergency_hospitals(
+                    user_lat=user_lat,
+                    user_lon=user_lon,
+                    max_distance=max_distance,
+                    limit=limit
+                )
+            else:
+                nearby_hospitals = hospital_finder.find_nearby_hospitals(
+                    user_lat=user_lat,
+                    user_lon=user_lon,
+                    department=department,
+                    max_distance=max_distance,
+                    limit=limit
+                )
         
         return jsonify({
             "status": "success",
